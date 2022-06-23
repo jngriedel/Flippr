@@ -1,0 +1,13 @@
+.fa-solid,
+fa-camera {
+    font-size: 1em;
+}
+
+
+.dropdown-bttn {
+    border-radius: 100%;
+    cursor: pointer;
+    background-color: rgb(252, 80, 252);
+    height: 30px;
+    width: 30px;
+}

@@ -1,4 +1,4 @@
-button {
+.login-bttn {
     background-color:  #128fdc ;
     color: #fff;
     padding-bottom: 0.5rem;
@@ -15,7 +15,7 @@ button {
 }
 
 
-button:hover {
+.login-bttn:hover {
 -webkit-filter: brightness(105%);
   filter: brightness(105%);
 }
