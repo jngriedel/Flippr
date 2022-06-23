@@ -1,0 +1,38 @@
+button {
+    background-color:  #128fdc ;
+    color: #fff;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 100%;   /*will fill up div when created */
+    cursor: pointer;
+    border-style: none;
+    border-radius: 0.25rem;
+    transition: background-color .2s;
+    margin-top:  32px;
+}
+
+
+button:hover {
+-webkit-filter: brightness(105%);
+  filter: brightness(105%);
+}
+
+
+
+input {
+    padding: 1.5rem 1rem 0.5rem 1rem;
+    border: 1px rgb(118, 118, 118) solid  ;
+    border-radius: 5px;
+}
+
+input:focus {
+    border: #128fdc 1px solid ;
+}
+
+
+label {
+    font-family: Proxima Nova,Helvetica,sans-serif;
+
+}
