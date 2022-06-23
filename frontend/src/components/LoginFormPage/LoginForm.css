@@ -11,6 +11,7 @@ button {
     border-radius: 0.25rem;
     transition: background-color .2s;
     margin-top:  32px;
+    font-weight: bold;
 }
 
 
@@ -25,6 +26,7 @@ input {
     padding: 1.5rem 1rem 0.5rem 1rem;
     border: 1px rgb(118, 118, 118) solid  ;
     border-radius: 5px;
+    margin-top: 10px;
 }
 
 input:focus {
@@ -35,4 +37,12 @@ input:focus {
 label {
     font-family: Proxima Nova,Helvetica,sans-serif;
 
+}
+
+.signup-login {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-items: center;
+    justify-content: center;
 }
