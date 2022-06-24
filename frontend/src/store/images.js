@@ -43,7 +43,7 @@ export const uploadImage = (image) => async dispatch => {
 
 
 
-const initialState = { user: null };
+const initialState = {};
 
 const imageReducer = (state = initialState, action) => {
     switch (action.type) {
