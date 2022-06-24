@@ -1,7 +1,15 @@
+import { csrfFetch } from './csrf';
+
 
 const ADD_IMAGE = 'images/addImage'
 const DELETE_IMAGE = 'images/deleteImage'
 const UPDATE_IMAGE = 'images/updateImage'
+const LOAD = '/images/loadImages'
+
+const load = list => ({
+    type: LOAD,
+    list
+  });
 
 const addImage = (image) => {
     return {
@@ -11,9 +19,10 @@ const addImage = (image) => {
 };
 
 
-const deleteImage = () => {
+const deleteImage = (imageId) => {
     return {
-        type: DELETE_IMAGE
+        type: DELETE_IMAGE,
+        payload: imageId
     }
 }
 
@@ -26,9 +35,21 @@ const updateImage = (image) => {
 };
 
 
+export const getImages = (userId) => async dispatch => {
+    const response = await csrfFetch('/api/cameraroll',{
+        method: 'GET',
+        body: JSON.stringify({userId})
+    })
+
+    if (response.ok){
+    const userImages = await response.json();
+    dispatch(load(userImages))
+    return userImages
+    }
+}
 export const uploadImage = (image) => async dispatch => {
     const {imageUrl, content, userId} = image;
-    const response = await fetch('/api/images/upload', {
+    const response = await csrfFetch('/api/images/upload', {
         method: 'POST',
         body: JSON.stringify({
             imageUrl,
@@ -42,6 +63,16 @@ export const uploadImage = (image) => async dispatch => {
     return data
     }
 }
+export const removeImage = (imageId) => async dispatch => {
+
+    const response = await csrfFetch(`/api/images/${imageId}`, {
+        method: 'DELETE',
+    })
+    if (response.ok){
+    dispatch(deleteImage(imageId))
+    return imageId
+    }
+}
 
 
 
@@ -49,14 +80,16 @@ const initialState = {};
 
 const imageReducer = (state = initialState, action) => {
     switch (action.type) {
-      case ADD_IMAGE:
+      case ADD_IMAGE: {
         const newState = {...state};
         newState[action.payload.id] = action.payload;
         return newState;
-    //   case REMOVE_USER:
-    //     newState = Object.assign({}, state);
-    //     newState.user = null;
-    //     return newState;
+      }
+      case DELETE_IMAGE: {
+        const newState = {...state}
+        delete newState[action.payload]
+        return newState;
+      }
       default:
         return state;
     }

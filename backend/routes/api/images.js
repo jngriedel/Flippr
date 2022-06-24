@@ -19,6 +19,7 @@ const validateImage = [
 ];
 
 // Upload
+
 router.post(
     '/upload',
     validateImage,
@@ -29,4 +30,14 @@ router.post(
     }),
   );
 
+  //Delete
+router.delete(
+    '/:imageId',
+    validateImage,
+    asyncHandler(async (req, res) => {
+
+      await Image.destroy(req.params.imageId);
+      res.json("Success")
+    }),
+  );
 module.exports = router;
