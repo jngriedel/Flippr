@@ -21,6 +21,7 @@ const validateImage = [
 // Upload
 router.post(
     '/upload',
+    validateImage,
     asyncHandler(async (req, res) => {
       const { imageUrl, content, userId  } = req.body;
       const newImage = await Image.create({ imageUrl, content, userId });

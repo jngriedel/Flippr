@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // import * as imagesActions from '../../store/images';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import {uploadImage} from '../../store/images';
 // import './ImageForm.css';
 
 function ImageFormPage() {
@@ -25,11 +26,11 @@ function ImageFormPage() {
         content,
         userId : sessionUser.id
     }
-    // return dispatch(sessionActions.login({ credential, password }))
-    //   .catch(async (res) => {
-    //     const data = await res.json();
-    //     if (data && data.errors) setErrors(data.errors);
-    //   });
+    dispatch(uploadImage(payload))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
   }
 
   return (

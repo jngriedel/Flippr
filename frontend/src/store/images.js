@@ -13,7 +13,7 @@ const addImage = (image) => {
 
 const deleteImage = () => {
     return {
-        type: DELETE_IMAGE;
+        type: DELETE_IMAGE
     }
 }
 
@@ -36,9 +36,11 @@ export const uploadImage = (image) => async dispatch => {
             userId
         })
     })
+    if (response.ok){
     const data = await response.json();
     dispatch(addImage(data))
     return data
+    }
 }
 
 
@@ -48,8 +50,8 @@ const initialState = {};
 const imageReducer = (state = initialState, action) => {
     switch (action.type) {
       case ADD_IMAGE:
-        newState = Object.assign({}, state);
-        newState.user = action.payload;
+        const newState = {...state};
+        newState[action.payload.id] = action.payload;
         return newState;
     //   case REMOVE_USER:
     //     newState = Object.assign({}, state);
