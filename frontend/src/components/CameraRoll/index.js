@@ -1,57 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import * as imagesActions from '../../store/images';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import {getImages} from '../../store/images';
-// import './ImageForm.css';
+import {getImages, removeImage} from '../../store/images';
+import './CameraRoll.css';
 
 function CameraRoll() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const [imageUrl, setImageUrl] = useState('');
+
   const [content, setContent] = useState('');
   const [errors, setErrors] = useState([]);
-
-  if (!sessionUser) { return (
-    <Redirect to='/login'/>
-  )
-  }
 
   useEffect(()=> {
     dispatch(getImages(sessionUser.id))
   },[])
 
+  const deleteImage = (imageId) => {
+    dispatch(removeImage(imageId))
+  }
+
+  const userImagesObj = useSelector(state => state.images)
+  const userImages = Object.values(userImagesObj)
+
+ 
+
 
 
 
   return (
-    <div >
-    <form className='' onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, i) => <li key={i}>{error}</li>)}
-      </ul>
-      <label>
-        Image URL
-        <input
-          type="text"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Describe Your Image
-        <input
-          type="text"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          required
-        />
-      </label>
-      <button className='login-bttn' type="submit">Upload</button>
-    </form>
+    <div className='all-cameraroll-images'>
+
+        {
+        userImages &&
+        userImages.map((image)=> (
+
+            <div key={image.id} className='image-cameraroll-container'>
+            <img className='image-cameraroll' src={image.imageUrl}/>
+            <span>{image.content}</span>
+            <button onClick={()=>deleteImage(image.id)}>Delete</button>
+            </div>
+        ))
+        }
     </div>
   );
+
 }
 
 export default CameraRoll

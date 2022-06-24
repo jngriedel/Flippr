@@ -26,6 +26,7 @@ router.post(
     asyncHandler(async (req, res) => {
       const { imageUrl, content, userId  } = req.body;
       const newImage = await Image.create({ imageUrl, content, userId });
+
       res.json(newImage)
     }),
   );
@@ -33,10 +34,14 @@ router.post(
   //Delete
 router.delete(
     '/:imageId',
-    validateImage,
     asyncHandler(async (req, res) => {
+      const {imageId} = req.params
 
-      await Image.destroy(req.params.imageId);
+      console.log(+imageId)
+
+      await Image.destroy({where:{
+        id:imageId
+      }});
       res.json("Success")
     }),
   );

@@ -23,12 +23,15 @@ const router = express.Router();
 
   //Delete
 router.get(
-    '/',
+    '/:userId',
     asyncHandler(async (req, res) => {
-      const {userId} = req.body
+
+      const {userId} = req.params
+      console.log(userId)
       const usersImages = await Image.findAll({where:{
         userId
       }});
+
       res.json(usersImages)
     }),
   );

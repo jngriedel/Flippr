@@ -8,7 +8,7 @@ const LOAD = '/images/loadImages'
 
 const load = list => ({
     type: LOAD,
-    list
+    payload: list
   });
 
 const addImage = (image) => {
@@ -36,17 +36,16 @@ const updateImage = (image) => {
 
 
 export const getImages = (userId) => async dispatch => {
-    const response = await csrfFetch('/api/cameraroll',{
-        method: 'GET',
-        body: JSON.stringify({userId})
-    })
 
+    const response = await csrfFetch(`/api/cameraroll/${userId}`)
+    
     if (response.ok){
     const userImages = await response.json();
     dispatch(load(userImages))
     return userImages
     }
 }
+
 export const uploadImage = (image) => async dispatch => {
     const {imageUrl, content, userId} = image;
     const response = await csrfFetch('/api/images/upload', {
@@ -88,6 +87,13 @@ const imageReducer = (state = initialState, action) => {
       case DELETE_IMAGE: {
         const newState = {...state}
         delete newState[action.payload]
+        return newState;
+      }
+      case LOAD: {
+        const newState = {...state}
+         action.payload.forEach((image)=> {
+            newState[image.id] = image
+         })
         return newState;
       }
       default:
