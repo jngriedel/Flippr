@@ -38,9 +38,9 @@ router.put(
       const {imageId} = req.params
       const image = await Image.findByPk(+imageId)
       console.log(image)
-      await image.update({ content });
+      const updated = await image.update({ content });
 
-      res.json(image)
+        res.json(updated)
     }),
   );
 

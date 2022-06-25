@@ -84,9 +84,10 @@ export const editImage = (imageId, content) => async dispatch => {
 
     })
     if (response.ok){
-        const image = response.json()
-    dispatch(updateImage(image))
-    return image
+        const image = await response.json()
+        console.log(image)
+        dispatch(updateImage(image))
+        return image
     }
 }
 
@@ -115,7 +116,7 @@ const imageReducer = (state = initialState, action) => {
       }
       case UPDATE_IMAGE: {
         const newState = {...state}
-         newState[action.payload.id] = action.payload
+        newState[action.payload.id] = action.payload
         return newState;
       }
       default:

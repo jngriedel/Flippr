@@ -15,18 +15,16 @@ function ImagePage() {
     return el.id === +imageId
   })
 
-  const [pageImage, setPageImage] = useState(null)
+
   const [editContent, setEditContent] = useState(false);
   const [description, setDescription] = useState(myImage? myImage.id: '');
 
   useEffect(()=> {
     dispatch(getImages(sessionUser.id))
-    setPageImage(myImage)
-  },[])
-
-  useEffect(()=>{
 
   },[])
+
+
 
   const deleteImage = (imageId) => {
     let result = window.confirm("This photo will be gone forever. Are you Sure?");
