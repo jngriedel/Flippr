@@ -34,6 +34,7 @@ function ProfileButton({ user }) {
       <button className="dropdown-bttn" onClick={openMenu}>
         <i className="fa-solid fa-camera" />
       </button>
+      <div className="dropdown-menu">
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{user.username}</li>
@@ -43,6 +44,7 @@ function ProfileButton({ user }) {
           </li>
         </ul>
       )}
+      </div>
     </>
   );
 }

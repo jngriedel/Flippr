@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import {getImages, removeImage, editImage} from '../../store/images';
-// import './CameraRoll.css';
+import './ImagePage.css';
 
 function ImagePage() {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ function ImagePage() {
 
   useEffect(()=> {
      dispatch(getImages(sessionUser.id))
-     
+
   },[])
 
 
@@ -47,38 +47,43 @@ const editDescription = (imageId) => {
 
 
   return (
-    <div className='all-cameraroll-images'>
+    <div id='image-page'>
+    <div className='view-single-image'>
 
         {
-            <div className='image-cameraroll-container'>
-                <img className='image-cameraroll' src={myImage?.imageUrl}/>
-                {!editContent &&
-                <>
-                <span>{myImage?.content}</span>
-                <button onClick={()=>setEditContent(true)}>Edit Description</button>
-                </>
-                    }
-                {editContent &&
-                <>
-                <form onSubmit={()=>editDescription(myImage.id)}>
-                    <textarea
-                    name='description'
-                    // value={description}
-                    onChange={(e)=>{setDescription(e.target.value)}}
-                    >{description}
-                    </textarea>
-                    </form>
-                    <button onClick={()=>editDescription(myImage.id)}>Save</button>
-                    <button onClick={()=>setEditContent(false)}>Cancel</button>
-                    </>
-                    }
-                <div>
-                  <button onClick={()=>deleteImage(myImage.id)}>Delete</button>
+            <div >
+                <img className='image-alone' src={myImage?.imageUrl}/>
 
-                </div>
             </div>
 
         }
+    </div>
+        <div className='single-image-details'>
+            {!editContent &&
+                    <>
+                    <span>{myImage?.content}</span>
+                    <button onClick={()=>setEditContent(true)}>Edit Description</button>
+                    </>
+                        }
+                    {editContent &&
+                    <>
+                    <form onSubmit={()=>editDescription(myImage.id)}>
+                        <textarea
+                        name='description'
+                        // value={description}
+                        onChange={(e)=>{setDescription(e.target.value)}}
+                        >{description}
+                        </textarea>
+                        </form>
+                        <button onClick={()=>editDescription(myImage.id)}>Save</button>
+                        <button onClick={()=>setEditContent(false)}>Cancel</button>
+                        </>
+                        }
+                    <div>
+                    <button onClick={()=>deleteImage(myImage.id)}>Delete</button>
+
+                    </div>
+        </div>
     </div>
   );
 

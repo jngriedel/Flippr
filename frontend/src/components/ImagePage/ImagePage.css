@@ -1,0 +1,15 @@
+.view-single-image{
+    background-color: rgba(33,33,36,255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.image-alone {
+    aspect-ratio: auto;
+    max-width: 600px;
+    max-height: 400px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
