@@ -44,10 +44,6 @@ function CameraRoll() {
 
             <div key={image.id} className='image-cameraroll-container'>
                 <img onClick={()=>redirect(image.id)} className='image-cameraroll' src={image.imageUrl}/>
-                {/* <span>{image.content}</span> */}
-                {/* <div>
-                  <button onClick={()=>deleteImage(image.id)}>Delete</button>
-                </div> */}
             </div>
         ))
         }

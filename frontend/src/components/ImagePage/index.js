@@ -17,11 +17,11 @@ function ImagePage() {
 
 
   const [editContent, setEditContent] = useState(false);
-  const [description, setDescription] = useState(myImage? myImage.id: '');
+  const [description, setDescription] = useState(myImage?.content);
 
   useEffect(()=> {
-    dispatch(getImages(sessionUser.id))
-
+     dispatch(getImages(sessionUser.id))
+     
   },[])
 
 
@@ -63,7 +63,7 @@ const editDescription = (imageId) => {
                 <form onSubmit={()=>editDescription(myImage.id)}>
                     <textarea
                     name='description'
-                    value={description}
+                    // value={description}
                     onChange={(e)=>{setDescription(e.target.value)}}
                     >{description}
                     </textarea>
