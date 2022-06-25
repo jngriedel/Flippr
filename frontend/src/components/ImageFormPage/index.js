@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import * as imagesActions from '../../store/images';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import {uploadImage} from '../../store/images';
 // import './ImageForm.css';
 
@@ -11,6 +11,7 @@ function ImageFormPage() {
   const [imageUrl, setImageUrl] = useState('');
   const [content, setContent] = useState('');
   const [errors, setErrors] = useState([]);
+  const history = useHistory()
 
   if (!sessionUser) { return (
     <Redirect to='/login'/>
@@ -31,6 +32,8 @@ function ImageFormPage() {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       });
+
+     history.push('/cameraroll')
   }
 
   return (

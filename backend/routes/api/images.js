@@ -31,13 +31,26 @@ router.post(
     }),
   );
 
+router.put(
+    '/:imageId',
+    asyncHandler(async (req, res) => {
+      const { content  } = req.body;
+      const {imageId} = req.params
+      const image = await Image.findByPk(+imageId)
+      console.log(image)
+      await image.update({ content });
+
+      res.json(image)
+    }),
+  );
+
   //Delete
 router.delete(
     '/:imageId',
     asyncHandler(async (req, res) => {
       const {imageId} = req.params
 
-      console.log(+imageId)
+
 
       await Image.destroy({where:{
         id:imageId

@@ -7,6 +7,7 @@ import ImageFormPage from './components/ImageFormPage';
 import CameraRoll from "./components/CameraRoll";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import ImagePage from "./components/ImagePage";
 
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/cameraroll">
             <CameraRoll />
+          </Route>
+          <Route path="/images/:imageId">
+            <ImagePage />
           </Route>
         </Switch>
       )}

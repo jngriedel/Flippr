@@ -38,7 +38,7 @@ const updateImage = (image) => {
 export const getImages = (userId) => async dispatch => {
 
     const response = await csrfFetch(`/api/cameraroll/${userId}`)
-    
+
     if (response.ok){
     const userImages = await response.json();
     dispatch(load(userImages))
@@ -66,10 +66,27 @@ export const removeImage = (imageId) => async dispatch => {
 
     const response = await csrfFetch(`/api/images/${imageId}`, {
         method: 'DELETE',
+
     })
     if (response.ok){
     dispatch(deleteImage(imageId))
     return imageId
+    }
+}
+
+export const editImage = (imageId, content) => async dispatch => {
+
+    const response = await csrfFetch(`/api/images/${imageId}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            content,
+        })
+
+    })
+    if (response.ok){
+        const image = response.json()
+    dispatch(updateImage(image))
+    return image
     }
 }
 
@@ -94,6 +111,11 @@ const imageReducer = (state = initialState, action) => {
          action.payload.forEach((image)=> {
             newState[image.id] = image
          })
+        return newState;
+      }
+      case UPDATE_IMAGE: {
+        const newState = {...state}
+         newState[action.payload.id] = action.payload
         return newState;
       }
       default:

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 // import * as imagesActions from '../../store/images';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import {getImages, removeImage} from '../../store/images';
 import './CameraRoll.css';
 
 function CameraRoll() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+  const history = useHistory()
 
   const [content, setContent] = useState('');
   const [errors, setErrors] = useState([]);
@@ -17,13 +18,19 @@ function CameraRoll() {
   },[])
 
   const deleteImage = (imageId) => {
-    dispatch(removeImage(imageId))
-  }
+    let result = window.confirm("This photo will be gone forever. Are you Sure?");
+    if (result) {
+        dispatch(removeImage(imageId))
+    }
 
+  }
+  const redirect = (imageId) => {
+    history.push(`/images/${imageId}`)
+  }
   const userImagesObj = useSelector(state => state.images)
   const userImages = Object.values(userImagesObj)
 
- 
+
 
 
 
@@ -36,9 +43,11 @@ function CameraRoll() {
         userImages.map((image)=> (
 
             <div key={image.id} className='image-cameraroll-container'>
-            <img className='image-cameraroll' src={image.imageUrl}/>
-            <span>{image.content}</span>
-            <button onClick={()=>deleteImage(image.id)}>Delete</button>
+                <img onClick={()=>redirect(image.id)} className='image-cameraroll' src={image.imageUrl}/>
+                {/* <span>{image.content}</span> */}
+                {/* <div>
+                  <button onClick={()=>deleteImage(image.id)}>Delete</button>
+                </div> */}
             </div>
         ))
         }
