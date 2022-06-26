@@ -85,7 +85,7 @@ export const editImage = (imageId, content) => async dispatch => {
     })
     if (response.ok){
         const image = await response.json()
-        console.log(image)
+       
         dispatch(updateImage(image))
         return image
     }
