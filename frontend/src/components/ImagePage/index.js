@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import {getImages, removeImage, editImage} from '../../store/images';
 import './ImagePage.css';
+import CommentsContainer from '../CommentsContainer';
 
 function ImagePage() {
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const editDescription = (imageId) => {
 
   return (
     <div id='image-page'>
-    <div className='view-single-image'>
+      <div className='view-single-image'>
 
         {
             <div >
@@ -80,9 +81,13 @@ const editDescription = (imageId) => {
                         </>
                         }
                     <div>
-                    <button onClick={()=>deleteImage(myImage.id)}>Delete</button>
+                      <button onClick={()=>deleteImage(myImage.id)}>Delete</button>
 
                     </div>
+
+                        <CommentsContainer/>
+
+
         </div>
     </div>
   );

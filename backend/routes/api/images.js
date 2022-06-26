@@ -33,6 +33,7 @@ router.post(
 
 router.put(
     '/:imageId',
+    requireAuth,
     asyncHandler(async (req, res) => {
       const { content  } = req.body;
       const {imageId} = req.params
