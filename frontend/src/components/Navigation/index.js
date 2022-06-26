@@ -11,7 +11,9 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-      <NavLink to='/images/upload'>Upload</NavLink>
+      <NavLink to='/images/upload'>
+        Upload
+      </NavLink>
       <ProfileButton user={sessionUser} />
       </>
     );
@@ -26,12 +28,14 @@ function Navigation({ isLoaded }){
   }
 
   return (
+    <div className='navbar'>
     <ul>
       <li>
         <NavLink exact to="/">Home</NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>
+    </div>
   );
 }
 

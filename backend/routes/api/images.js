@@ -19,13 +19,43 @@ const validateImage = [
 ];
 
 // Upload
+
 router.post(
     '/upload',
+    validateImage,
     asyncHandler(async (req, res) => {
       const { imageUrl, content, userId  } = req.body;
       const newImage = await Image.create({ imageUrl, content, userId });
+
       res.json(newImage)
     }),
   );
 
+router.put(
+    '/:imageId',
+    asyncHandler(async (req, res) => {
+      const { content  } = req.body;
+      const {imageId} = req.params
+      const image = await Image.findByPk(+imageId)
+      console.log(image)
+      const updated = await image.update({ content });
+
+        res.json(updated)
+    }),
+  );
+
+  //Delete
+router.delete(
+    '/:imageId',
+    asyncHandler(async (req, res) => {
+      const {imageId} = req.params
+
+
+
+      await Image.destroy({where:{
+        id:imageId
+      }});
+      res.json("Success")
+    }),
+  );
 module.exports = router;
