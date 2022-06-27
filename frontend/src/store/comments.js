@@ -38,7 +38,7 @@ const updateComment = (comment) => {
 export const getComments = (imageId) => async dispatch => {
 
     const response = await csrfFetch(`/api/images/${imageId}/comments`)
-    
+
     if (response.ok){
     const imageComments = await response.json();
     dispatch(loadComments(imageComments))
@@ -108,7 +108,7 @@ const commentsReducer = (state = initialState, action) => {
         return newState;
       }
       case LOAD: {
-        const newState = {...state}
+        const newState = {}
          action.payload.forEach((comment)=> {
             newState[comment.id] = comment
          })
