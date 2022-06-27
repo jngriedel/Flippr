@@ -11,7 +11,9 @@ function HomePage() {
 
 
   useEffect(()=> {
-    dispatch(getAllImages(sessionUser.id))
+
+    dispatch(getAllImages())
+
   },[])
 
   const redirect = (imageId) => {

@@ -76,7 +76,7 @@ const editDescription = async(e) => {
                     <span>{myImage?.content}</span>
                     <button
                     onClick={()=>setEditContent(true)}
-                    style={{visibility: myImage.userId === sessionUser.id ? "visible" : "hidden"}}><i className="fas fa-edit"></i></button>
+                    style={{visibility: myImage.userId === sessionUser?.id ? "visible" : "hidden"}}><i className="fas fa-edit"></i></button>
                     </>
                         }
 
@@ -103,7 +103,7 @@ const editDescription = async(e) => {
                     {myImage &&
                     <div>
                       <button onClick={()=>deleteImage(myImage.id)}
-                      style={{visibility: myImage.userId === sessionUser.id ? "visible" : "hidden"}}><i className="fa fa-trash" aria-hidden="true"></i></button>
+                      style={{visibility: myImage.userId === sessionUser?.id ? "visible" : "hidden"}}><i className="fa fa-trash" aria-hidden="true"></i></button>
 
                     </div>}
 
