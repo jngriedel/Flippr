@@ -10,7 +10,7 @@ import SingleComment from '../SingleComment';
 
 
 function CommentsContainer ({imageId}) {
-    const [editContent, setEditContent] = useState(false);
+    
     const [showCommentButton, setShowCommentButton] = useState("hidden")
     const [body, setBody] = useState("")
     const sessionUser = useSelector(state => state.session.user);
