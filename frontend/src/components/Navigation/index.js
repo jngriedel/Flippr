@@ -30,8 +30,10 @@ function Navigation({ isLoaded }){
   return (
     <div className='navbar'>
       <div className='logo-dots'>
+        <NavLink to='/'>
           <img id='dots' src='/images/flickrdots.png'></img>
           <img id='logo' src='/images/flipprlogo.png'></img>
+        </NavLink>
       </div>
     <ul id='rightsidenav'>
       <li>

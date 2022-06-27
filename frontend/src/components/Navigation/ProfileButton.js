@@ -35,21 +35,24 @@ function ProfileButton({ user }) {
   return (
     <>
       <button className="dropdown-bttn" onClick={openMenu}>
-        <i className="fa-solid fa-camera" />
       </button>
       <div className="dropdown-menu">
       {showMenu && (
         <>
+        <div className="greeting-box">
           <div className="intro-message">
           <h4>{'Hello, '}</h4><NavLink id='profile-link' to="/cameraroll"> {user.username}</NavLink>
           <h4>!</h4>
-          <p id='silly-greeting'>Now you know how to greet people in English</p>
+
           </div>
+          <p id='silly-greeting'>Now you know how to greet people in English.</p>
+        </div>
 
-          <NavLink to="/cameraroll">Your Photos</NavLink>
+          <div className="other-menu-options">
+          <NavLink className="dropdown-options" to="/cameraroll">Your Photos</NavLink>
 
-          <button className="dropdown-options" onClick={logout}>Log Out</button>
-
+          <button id="dropdown-logout" onClick={logout}>Log Out</button>
+          </div>
 
         </>
       )}

@@ -15,13 +15,14 @@ html, body {
     height: 140px;
     width: 140px;
     margin: 5px;
+    box-sizing: border-box;
 
 
 
 }
 .image-cameraroll-container:hover {
-    border: 3px solid #62beec;
-    border-radius: 2px;
+    outline: 3px solid #62beec;
+    filter: brightness(90%);
 
 }
 

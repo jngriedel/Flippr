@@ -5,6 +5,8 @@ fa-camera {
 
 
 .dropdown-bttn {
+    background: url("../../../public/images/profile\ photo.jpg") no-repeat scroll 0 0 transparent;
+    background-size: 100%;
     border-radius: 100%;
     cursor: pointer;
     background-color: rgb(252, 80, 252);
@@ -39,7 +41,37 @@ fa-camera {
 
 .dropdown-options {
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+.dropdown-options:hover {
+    text-decoration: none;
 
+
+}
+.dropdown-options:visited {
+    text-decoration: none;
+
+
+}
+
+.other-menu-options {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+#dropdown-logout{
+    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    background: none;
+    border: none;
+    text-align: start;
+}
+#dropdown-logout:hover{
+    cursor: pointer;
 }
 
 #signup-bttn {
@@ -61,7 +93,7 @@ fa-camera {
 
 #login-bttn{
 
-    color: #fff;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -85,8 +117,18 @@ fa-camera {
     flex-direction: row;
     justify-content: start;
     align-items: center;
+
+
+}
+
+.greeting-box{
+    display: flex;
+    flex-direction:column;
+    border-bottom: solid 1px #e1e1e1;
     padding: 15px 20px;
 }
+
+
 
 #profile-link {
     text-decoration: none;
@@ -119,4 +161,8 @@ fa-camera {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+.logo-dots:hover {
+    filter: brightness(90%);
+    cursor: pointer;
 }
