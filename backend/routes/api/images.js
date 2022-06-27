@@ -22,7 +22,7 @@ const validateImage = [
 
 router.get('/',
             asyncHandler(async (req, res)=>{
-
+              console.log('failed here')
                 const images = await Image.findAll({
                 order: [
                     ["createdAt", "DESC"],
@@ -31,7 +31,7 @@ router.get('/',
 
                 res.json(images)
             }))
-            
+
 router.get('/:imageId',
             asyncHandler(async (req, res)=>{
               const {imageId} = req.params;
