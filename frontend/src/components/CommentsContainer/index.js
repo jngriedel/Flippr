@@ -53,6 +53,7 @@ function CommentsContainer ({imageId}) {
             }
 
         </div>
+        { sessionUser &&
         <div className='comment-input'>
             <form onSubmit={handleSubmit}>
                 <textarea
@@ -67,7 +68,7 @@ function CommentsContainer ({imageId}) {
                 style={{ visibility: showCommentButton }}
                 type='submit'  >Comment</button>
             </form>
-        </div>
+        </div>}
     </div>
     )
 
