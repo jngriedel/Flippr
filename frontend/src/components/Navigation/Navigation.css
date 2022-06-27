@@ -5,11 +5,14 @@ fa-camera {
 
 
 .dropdown-bttn {
+    background: url("../../../public/images/profile\ photo.jpg") no-repeat scroll 0 0 transparent;
+    background-size: 100%;
     border-radius: 100%;
     cursor: pointer;
     background-color: rgb(252, 80, 252);
     height: 30px;
     width: 30px;
+    margin-left: 30px;
 }
 
 .navbar {
@@ -19,13 +22,159 @@ fa-camera {
     background-color: rgba(20,20,22,255);
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: space-between;
 
 }
 
 .dropdown-menu {
-    position: absolute;
     z-index: 5;
     color: #212124;
     background-color:rgba(255,255,255,255);
+    width: 300px;
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    border-radius: 3px;
+
+
+
+}
+
+.dropdown-options {
+    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+.dropdown-options:hover {
+    text-decoration: none;
+
+
+}
+.dropdown-options:visited {
+    text-decoration: none;
+
+
+}
+
+.other-menu-options {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+#dropdown-logout{
+    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    background: none;
+    border: none;
+    text-align: start;
+}
+#dropdown-logout:hover{
+    cursor: pointer;
+}
+
+#signup-bttn {
+  color: #000;
+  background-color: #fff;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0 20px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  height: 32px;
+  line-height: 32px;
+  min-width: 80px;
+  text-decoration: none;
+  border-radius: 3px ;
+}
+
+#login-bttn{
+
+  color: #fff;
+  text-decoration: none;
+}
+
+#cloud-bttn {
+    width: 50x;
+  height: 30px;
+  color: #fff;
+  margin-left: 30px;
+
+}
+
+#house-bttn{
+    width: 50x;
+  height: 30px;
+  color: #fff;
+  margin-left: 30px;
+}
+
+.intro-message{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+
+
+}
+
+.greeting-box{
+    display: flex;
+    flex-direction:column;
+    border-bottom: solid 1px #e1e1e1;
+    padding: 15px 20px;
+}
+
+
+
+#profile-link {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+}
+
+#profile-link:hover {
+    text-decoration: underline;
+}
+
+
+#silly-greeting {
+  margin-top: 8px;
+  color: #b3b3b3;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+#logo{
+    height: 25px;
+}
+
+#dots {
+    margin-top: 5px;
+    height: 25px;
+}
+
+.logo-dots {
+    margin-left: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.logo-dots:hover {
+    filter: brightness(90%);
+    cursor: pointer;
+}
+
+
+
+h4 {
+    margin: 0;
+}
+
+p {
+    margin-bottom: 0;
 }

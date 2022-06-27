@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
+
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const history = useHistory()
 
   const openMenu = () => {
     if (showMenu) return;
@@ -27,22 +29,32 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    history.push('/')
   };
 
   return (
     <>
       <button className="dropdown-bttn" onClick={openMenu}>
-        <i className="fa-solid fa-camera" />
       </button>
       <div className="dropdown-menu">
       {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <NavLink to="/cameraroll">Your Photos</NavLink>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
+        <>
+        <div className="greeting-box">
+          <div className="intro-message">
+          <h4>{'Hello, '}</h4><NavLink id='profile-link' to="/cameraroll"> {user.username}</NavLink>
+          <h4>!</h4>
+
+          </div>
+          <p id='silly-greeting'>Now you know how to greet people in English.</p>
+        </div>
+
+          <div className="other-menu-options">
+          <NavLink className="dropdown-options" to="/cameraroll">Your Photos</NavLink>
+
+          <button id="dropdown-logout" onClick={logout}>Log Out</button>
+          </div>
+
+        </>
       )}
       </div>
     </>

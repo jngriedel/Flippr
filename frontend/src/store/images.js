@@ -45,6 +45,27 @@ export const getImages = (userId) => async dispatch => {
     return userImages
     }
 }
+export const getAllImages = () => async dispatch => {
+
+    const response = await csrfFetch(`/api/images`)
+
+    if (response.ok){
+    const allImages = await response.json();
+    dispatch(load(allImages))
+    return allImages
+    }
+}
+
+export const getSingleImage = (imageId) => async dispatch => {
+
+    const response = await csrfFetch(`/api/images/${imageId}`)
+
+    if (response.ok){
+    const image = await response.json();
+    dispatch(load(image))
+    return image
+    }
+}
 
 export const uploadImage = (image) => async dispatch => {
     const {imageUrl, content, userId} = image;
@@ -85,7 +106,7 @@ export const editImage = (imageId, content) => async dispatch => {
     })
     if (response.ok){
         const image = await response.json()
-        console.log(image)
+
         dispatch(updateImage(image))
         return image
     }

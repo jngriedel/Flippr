@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from 'react';
-// import * as imagesActions from '../../store/images';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
-import {getImages, removeImage} from '../../store/images';
-import './CameraRoll.css';
+import { useHistory } from 'react-router-dom';
+import {getAllImages} from '../../store/images';
 
-function CameraRoll() {
+
+function HomePage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory()
 
-  const [content, setContent] = useState('');
-  const [errors, setErrors] = useState([]);
 
   useEffect(()=> {
-    dispatch(getImages(sessionUser.id))
+
+    dispatch(getAllImages())
+
   },[])
 
- 
   const redirect = (imageId) => {
     history.push(`/images/${imageId}`)
   }
-  const userImagesObj = useSelector(state => state.images)
-  const userImages = Object.values(userImagesObj)
+
+  const allImagesObj = useSelector(state => state.images)
+  const allImages = Object.values(allImagesObj)
 
 
 
@@ -35,8 +34,8 @@ function CameraRoll() {
         <div className='all-cameraroll-images'>
 
             {
-            userImages &&
-            userImages.map((image)=> (
+            allImages &&
+            allImages.map((image)=> (
 
                 <div key={image.id} className='image-cameraroll-container'>
                     <img onClick={()=>redirect(image.id)} className='image-cameraroll' src={image.imageUrl}/>
@@ -52,4 +51,4 @@ function CameraRoll() {
 
 }
 
-export default CameraRoll
+export default HomePage

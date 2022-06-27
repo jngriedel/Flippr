@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory, useParams } from 'react-router-dom';
-import {getImages, removeImage, editImage} from '../../store/images';
+import {  useHistory, useParams } from 'react-router-dom';
+import {getSingleImage, removeImage, editImage} from '../../store/images';
 import './ImagePage.css';
+import CommentsContainer from '../CommentsContainer';
+
 
 function ImagePage() {
   const dispatch = useDispatch();
@@ -11,20 +13,28 @@ function ImagePage() {
   const userImages = Object.values(userImagesObj)
   const history = useHistory()
   const {imageId} = useParams()
-  const myImage = userImages.find((el)=>{
-    return el.id === +imageId
+  const myImage = userImages.find((image)=>{
+    return image.id === +imageId
   })
 
 
   const [editContent, setEditContent] = useState(false);
   const [description, setDescription] = useState(myImage?.content);
 
+
+
+
+
   useEffect(()=> {
-     dispatch(getImages(sessionUser.id))
+    dispatch(getSingleImage(imageId))
 
-  },[])
+  },[dispatch])
 
-
+ useEffect(()=> {
+    if (myImage) {
+        setDescription(myImage.content)
+    }
+ },[myImage])
 
   const deleteImage = (imageId) => {
     let result = window.confirm("This photo will be gone forever. Are you Sure?");
@@ -35,10 +45,12 @@ function ImagePage() {
 
   }
 
-const editDescription = (imageId) => {
-
-    dispatch(editImage(imageId, description))
+const editDescription = async(e) => {
+    e.preventDefault()
+    const response = await dispatch(editImage(imageId, description))
+    if (response) {
     setEditContent(false)
+    }
 }
 
 
@@ -48,7 +60,7 @@ const editDescription = (imageId) => {
 
   return (
     <div id='image-page'>
-    <div className='view-single-image'>
+      <div className='view-single-image'>
 
         {
             <div >
@@ -59,30 +71,48 @@ const editDescription = (imageId) => {
         }
     </div>
         <div className='single-image-details'>
-            {!editContent &&
+            {!editContent && myImage &&
                     <>
                     <span>{myImage?.content}</span>
-                    <button onClick={()=>setEditContent(true)}>Edit Description</button>
+                    <button
+                    onClick={()=>setEditContent(true)}
+                    style={{visibility: myImage.userId === sessionUser?.id ? "visible" : "hidden"}}><i className="fas fa-edit"></i></button>
                     </>
                         }
-                    {editContent &&
-                    <>
-                    <form onSubmit={()=>editDescription(myImage.id)}>
-                        <textarea
-                        name='description'
-                        // value={description}
-                        onChange={(e)=>{setDescription(e.target.value)}}
-                        >{description}
-                        </textarea>
-                        </form>
-                        <button onClick={()=>editDescription(myImage.id)}>Save</button>
-                        <button onClick={()=>setEditContent(false)}>Cancel</button>
-                        </>
-                        }
-                    <div>
-                    <button onClick={()=>deleteImage(myImage.id)}>Delete</button>
 
-                    </div>
+
+            {editContent && myImage &&
+            <>
+            <form onSubmit={editDescription}
+                  onBlur={()=>{setEditContent(false);
+                setDescription(myImage.content)}}>
+                <textarea
+                name='description'
+                onChange={(e)=>{setDescription(e.target.value)}}
+
+
+                value={description}
+                >{description}
+                </textarea>
+                <button className='bttn' type='submit'>Done</button>
+            </form>
+
+
+                </>
+                }
+                    {myImage &&
+                    <div>
+                      <button onClick={()=>deleteImage(myImage.id)}
+                      style={{visibility: myImage.userId === sessionUser?.id ? "visible" : "hidden"}}><i className="fa fa-trash" aria-hidden="true"></i></button>
+
+                    </div>}
+
+
+
+                    <CommentsContainer imageId={imageId}/>
+
+
+
         </div>
     </div>
   );
