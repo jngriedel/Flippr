@@ -31,6 +31,7 @@ router.get('/',
 
                 res.json(images)
             }))
+            
 router.get('/:imageId',
             asyncHandler(async (req, res)=>{
               const {imageId} = req.params;

@@ -51,14 +51,15 @@ function SingleComment ({comment}) {
             }
             {editContent &&
             <>
-                <form onSubmit={changeComment}>
+                <form onSubmit={changeComment}
+                onBlur={() => {
+                    setEditContent(false);
+                    setCurrentComment(comment.body)
+                }}>
                     <textarea
                         name='currentComment'
                         onChange={(e) => { setCurrentComment(e.target.value) }}
-                        // // onBlur={() => {
-                        // //     setEditContent(false);
-                        // //     setCurrentComment(comment.body)
-                        // }}
+
 
                         value={currentComment}
                     >{currentComment}

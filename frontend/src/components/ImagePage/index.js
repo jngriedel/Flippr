@@ -83,12 +83,13 @@ const editDescription = async(e) => {
 
             {editContent && myImage &&
             <>
-            <form onSubmit={editDescription}>
+            <form onSubmit={editDescription}
+                  onBlur={()=>{setEditContent(false);
+                setDescription(myImage.content)}}>
                 <textarea
                 name='description'
                 onChange={(e)=>{setDescription(e.target.value)}}
-                // onBlur={()=>{setEditContent(false);
-                //     setDescription(myImage.content)}}
+
 
                 value={description}
                 >{description}
