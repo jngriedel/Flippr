@@ -69,7 +69,7 @@ const editDescription = (imageId) => {
                     <span>{myImage?.content}</span>
                     <button
                     onClick={()=>setEditContent(true)}
-                    style={{visibility: myImage.userId === sessionUser.id ? "visible" : "hidden"}}>Edit Description</button>
+                    style={{visibility: myImage.userId === sessionUser.id ? "visible" : "hidden"}}><i class="fas fa-edit"></i></button>
                     </>
                         }
                     {editContent &&
@@ -82,7 +82,7 @@ const editDescription = (imageId) => {
                         >{description}
                         </textarea>
                     </form>
-                        <button onClick={()=>editDescription(myImage.id)}>Save</button>
+                        <button className='bttn' onClick={()=>editDescription(myImage.id)}>Done</button>
                         <button onClick={()=>{setEditContent(false);
                         setDescription(myImage.content)}}>Cancel</button>
                         </>
@@ -90,7 +90,7 @@ const editDescription = (imageId) => {
                     {myImage &&
                     <div>
                       <button onClick={()=>deleteImage(myImage.id)}
-                      style={{visibility: myImage.userId === sessionUser.id ? "visible" : "hidden"}}>Delete</button>
+                      style={{visibility: myImage.userId === sessionUser.id ? "visible" : "hidden"}}><i class="fa fa-trash" aria-hidden="true"></i></button>
 
                     </div>}
 

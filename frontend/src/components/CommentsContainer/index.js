@@ -7,6 +7,7 @@ import './CommentsContainer.css'
 
 
 
+
 function CommentsContainer ({imageId}) {
     const [editContent, setEditContent] = useState(false);
     const [showCommentButton, setShowCommentButton] = useState("hidden")
@@ -36,8 +37,15 @@ function CommentsContainer ({imageId}) {
       }
 
       const onDelete = (commentId) => {
-        dispatch(removeComment(commentId))
+
+        let result = window.confirm("Delete this Comment?");
+        if (result) {
+            dispatch(removeComment(commentId))
+
+        }
+
       }
+
 
 
     return (
@@ -52,12 +60,12 @@ function CommentsContainer ({imageId}) {
                     <p className='image-cameraroll' >{comment.body}</p>
                     <button
                     style={{ visibility: sessionUser.id === comment.userId ? "visible" : "hidden" }}>
-                        Edit
+                        <i class="fas fa-edit"></i>
                         </button>
                     <button
                     style={{ visibility: sessionUser.id === comment.userId ? "visible" : "hidden" }}
                     onClick={()=> onDelete(comment.id)}
-                    >Delete</button>
+                    ><i class="fa fa-trash" aria-hidden="true"></i></button>
                 </div>
             ))
             }
