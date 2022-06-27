@@ -36,17 +36,23 @@ function CameraRoll() {
 
 
   return (
-    <div className='all-cameraroll-images'>
+    <div className='cameraroll-main'>
+        <div className='banner-cameraroll'></div>
+        <div className='all-cameraroll-images'>
 
-        {
-        userImages &&
-        userImages.map((image)=> (
+            {
+            userImages &&
+            userImages.map((image)=> (
 
-            <div key={image.id} className='image-cameraroll-container'>
-                <img onClick={()=>redirect(image.id)} className='image-cameraroll' src={image.imageUrl}/>
-            </div>
-        ))
-        }
+                <div key={image.id} className='image-cameraroll-container'>
+                    <img onClick={()=>redirect(image.id)} className='image-cameraroll' src={image.imageUrl}/>
+                </div>
+            ))
+            }
+        </div>
+
+
+
     </div>
   );
 

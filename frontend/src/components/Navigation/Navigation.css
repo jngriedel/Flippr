@@ -37,6 +37,7 @@ fa-camera {
     border-radius: 3px;
 
 
+
 }
 
 .dropdown-options {
@@ -142,7 +143,7 @@ fa-camera {
 
 
 #silly-greeting {
-    margin-top: 8px;
+  margin-top: 8px;
   color: #b3b3b3;
   font-size: 15px;
   line-height: 20px;
@@ -158,6 +159,7 @@ fa-camera {
 }
 
 .logo-dots {
+    margin-left: 40px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -165,4 +167,14 @@ fa-camera {
 .logo-dots:hover {
     filter: brightness(90%);
     cursor: pointer;
+}
+
+
+
+h4 {
+    margin: 0;
+}
+
+p {
+    margin-bottom: 0;
 }

@@ -30,7 +30,11 @@ function ImagePage() {
 
   },[dispatch])
 
-
+ useEffect(()=> {
+    if (myImage) {
+        setDescription(myImage.content)
+    }
+ },[myImage])
 
   const deleteImage = (imageId) => {
     let result = window.confirm("This photo will be gone forever. Are you Sure?");
@@ -73,24 +77,26 @@ const editDescription = (imageId) => {
                     style={{visibility: myImage.userId === sessionUser.id ? "visible" : "hidden"}}><i className="fas fa-edit"></i></button>
                     </>
                         }
-                    {editContent &&
-                    <>
-                    <form onSubmit={()=>editDescription(myImage.id)}>
-                        <textarea
-                        name='description'
-                        onChange={(e)=>{setDescription(e.target.value)}}
-                        onBlur={()=>{setEditContent(false);
-                            setDescription(myImage.content)}}
+                        {console.log(editContent && myImage && true)}
 
-                        value={description}
-                        >{description}
-                        </textarea>
-                    </form>
-                        <button className='bttn' onClick={()=>editDescription(myImage.id)}>Done</button>
-                        {/* <button onClick={()=>{setEditContent(false);
-                        setDescription(myImage.content)}}>Cancel</button> */}
-                        </>
-                        }
+            {editContent && myImage &&
+            <>
+            <form onSubmit={()=>editDescription(myImage.id)}>
+                <textarea
+                name='description'
+                onChange={(e)=>{setDescription(e.target.value)}}
+                onBlur={()=>{setEditContent(false);
+                    setDescription(myImage.content)}}
+
+                value={description}
+                >{description}
+                </textarea>
+            </form>
+                <button className='bttn' onClick={()=>editDescription(myImage.id)}>Done</button>
+                {/* <button onClick={()=>{setEditContent(false);
+                setDescription(myImage.content)}}>Cancel</button> */}
+                </>
+                }
                     {myImage &&
                     <div>
                       <button onClick={()=>deleteImage(myImage.id)}

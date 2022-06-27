@@ -1,8 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {getComments, editComment, removeComment, uploadComment} from '../../store/comments';
+import {getComments,  uploadComment} from '../../store/comments';
 import './CommentsContainer.css'
+import SingleComment from '../SingleComment';
 
 
 
@@ -36,15 +37,7 @@ function CommentsContainer ({imageId}) {
         }
       }
 
-      const onDelete = (commentId) => {
 
-        let result = window.confirm("Delete this Comment?");
-        if (result) {
-            dispatch(removeComment(commentId))
-
-        }
-
-      }
 
 
 
@@ -55,18 +48,7 @@ function CommentsContainer ({imageId}) {
             {
             comments &&
             comments.map((comment)=> (
-
-                <div key={comment.id} className='single-comment-container'>
-                    <p className='image-cameraroll' >{comment.body}</p>
-                    <button
-                    style={{ visibility: sessionUser.id === comment.userId ? "visible" : "hidden" }}>
-                        <i className="fas fa-edit"></i>
-                        </button>
-                    <button
-                    style={{ visibility: sessionUser.id === comment.userId ? "visible" : "hidden" }}
-                    onClick={()=> onDelete(comment.id)}
-                    ><i className="fa fa-trash" aria-hidden="true"></i></button>
-                </div>
+                <SingleComment comment={comment}/>
             ))
             }
 

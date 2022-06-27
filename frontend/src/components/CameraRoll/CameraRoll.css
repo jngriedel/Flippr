@@ -37,4 +37,6 @@ html, body {
     width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-left: 80px;
+    margin-right: 80px;
 }
