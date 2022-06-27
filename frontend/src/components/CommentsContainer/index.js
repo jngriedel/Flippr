@@ -60,12 +60,12 @@ function CommentsContainer ({imageId}) {
                     <p className='image-cameraroll' >{comment.body}</p>
                     <button
                     style={{ visibility: sessionUser.id === comment.userId ? "visible" : "hidden" }}>
-                        <i class="fas fa-edit"></i>
+                        <i className="fas fa-edit"></i>
                         </button>
                     <button
                     style={{ visibility: sessionUser.id === comment.userId ? "visible" : "hidden" }}
                     onClick={()=> onDelete(comment.id)}
-                    ><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    ><i className="fa fa-trash" aria-hidden="true"></i></button>
                 </div>
             ))
             }
