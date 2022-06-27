@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {  useHistory, useParams } from 'react-router-dom';
 import {getSingleImage, removeImage, editImage} from '../../store/images';
@@ -20,6 +20,7 @@ function ImagePage() {
 
   const [editContent, setEditContent] = useState(false);
   const [description, setDescription] = useState(myImage?.content);
+
 
 
 
@@ -78,13 +79,16 @@ const editDescription = (imageId) => {
                         <textarea
                         name='description'
                         onChange={(e)=>{setDescription(e.target.value)}}
+                        onBlur={()=>{setEditContent(false);
+                            setDescription(myImage.content)}}
+
                         value={description}
                         >{description}
                         </textarea>
                     </form>
                         <button className='bttn' onClick={()=>editDescription(myImage.id)}>Done</button>
-                        <button onClick={()=>{setEditContent(false);
-                        setDescription(myImage.content)}}>Cancel</button>
+                        {/* <button onClick={()=>{setEditContent(false);
+                        setDescription(myImage.content)}}>Cancel</button> */}
                         </>
                         }
                     {myImage &&

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { NavLink, useHistory } from 'react-router-dom';
 
+
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
@@ -38,13 +39,19 @@ function ProfileButton({ user }) {
       </button>
       <div className="dropdown-menu">
       {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
+        <>
+          <div className="intro-message">
+          <h4>{'Hello, '}</h4><NavLink id='profile-link' to="/cameraroll"> {user.username}</NavLink>
+          <h4>!</h4>
+          <p id='silly-greeting'>Now you know how to greet people in English</p>
+          </div>
+
           <NavLink to="/cameraroll">Your Photos</NavLink>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
+
+          <button className="dropdown-options" onClick={logout}>Log Out</button>
+
+
+        </>
       )}
       </div>
     </>

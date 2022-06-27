@@ -5,6 +5,7 @@ textarea{
     overflow: auto;
     vertical-align: top;
     resize: none;
+    height: 50px;
 
 }
 
