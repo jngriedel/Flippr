@@ -23,8 +23,13 @@ function SingleComment ({comment}) {
       }
 
 
-    const editComment = ()=> {
-        dispatch(editComment(comment.id, currentComment))
+    const changeComment = async(e)=> {
+        e.preventDefault()
+
+        const response = await dispatch(editComment(comment.id, currentComment))
+        if (response) {
+        setEditContent(false)
+        }
     }
 
     return (
@@ -46,20 +51,21 @@ function SingleComment ({comment}) {
             }
             {editContent &&
             <>
-                <form >
+                <form onSubmit={changeComment}>
                     <textarea
                         name='currentComment'
                         onChange={(e) => { setCurrentComment(e.target.value) }}
-                        onBlur={() => {
-                            setEditContent(false);
-                            setCurrentComment(comment.body)
-                        }}
+                        // // onBlur={() => {
+                        // //     setEditContent(false);
+                        // //     setCurrentComment(comment.body)
+                        // }}
 
                         value={currentComment}
                     >{currentComment}
                     </textarea>
+                    <button className='bttn' type='submit'>Done</button>
                 </form>
-                <button className='bttn' onClick={()=>editComment()}>Done</button>
+
             </>
             }
         </>

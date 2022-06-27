@@ -10,7 +10,7 @@ import SingleComment from '../SingleComment';
 
 
 function CommentsContainer ({imageId}) {
-    
+
     const [showCommentButton, setShowCommentButton] = useState("hidden")
     const [body, setBody] = useState("")
     const sessionUser = useSelector(state => state.session.user);
@@ -48,7 +48,7 @@ function CommentsContainer ({imageId}) {
             {
             comments &&
             comments.map((comment)=> (
-                <SingleComment comment={comment}/>
+                <SingleComment key={comment.id} comment={comment}/>
             ))
             }
 

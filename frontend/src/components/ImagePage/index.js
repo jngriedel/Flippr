@@ -45,10 +45,12 @@ function ImagePage() {
 
   }
 
-const editDescription = (imageId) => {
-
-    dispatch(editImage(imageId, description))
+const editDescription = async(e) => {
+    e.preventDefault()
+    const response = await dispatch(editImage(imageId, description))
+    if (response) {
     setEditContent(false)
+    }
 }
 
 
@@ -77,24 +79,24 @@ const editDescription = (imageId) => {
                     style={{visibility: myImage.userId === sessionUser.id ? "visible" : "hidden"}}><i className="fas fa-edit"></i></button>
                     </>
                         }
-                        {console.log(editContent && myImage && true)}
+
 
             {editContent && myImage &&
             <>
-            <form onSubmit={()=>editDescription(myImage.id)}>
+            <form onSubmit={editDescription}>
                 <textarea
                 name='description'
                 onChange={(e)=>{setDescription(e.target.value)}}
-                onBlur={()=>{setEditContent(false);
-                    setDescription(myImage.content)}}
+                // onBlur={()=>{setEditContent(false);
+                //     setDescription(myImage.content)}}
 
                 value={description}
                 >{description}
                 </textarea>
+                <button className='bttn' type='submit'>Done</button>
             </form>
-                <button className='bttn' onClick={()=>editDescription(myImage.id)}>Done</button>
-                {/* <button onClick={()=>{setEditContent(false);
-                setDescription(myImage.content)}}>Cancel</button> */}
+
+
                 </>
                 }
                     {myImage &&
