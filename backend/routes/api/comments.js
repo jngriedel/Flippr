@@ -40,6 +40,7 @@ router.post(
 router.put(
     '/:commentId',
     requireAuth,
+    validateComment,
     asyncHandler(async (req, res) => {
       const { body  } = req.body;
       const {commentId} = req.params
