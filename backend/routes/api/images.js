@@ -2,7 +2,7 @@ const express = require('express')
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Image } = require('../../db/models');
+const { Image, Comment } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -17,6 +17,22 @@ const validateImage = [
     .withMessage('Please provide an image URL.'),
   handleValidationErrors
 ];
+
+//get comments
+
+router.get('/:imageId/comments',
+            asyncHandler(async (req, res)=>{
+                const {imageId} = req.params;
+                const comments = await Comment.findAll({
+                where:
+                {imageId},
+                order: [
+                    ["createdAt", "DESC"],
+                  ],
+                })
+                console.log(comments)
+                res.json(comments)
+            }))
 
 // Upload
 
