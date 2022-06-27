@@ -51,6 +51,13 @@ function CommentsContainer ({imageId}) {
 
                 <div key={comment.id} className='single-comment-container'>
                     <p className='image-cameraroll' >{comment.body}</p>
+                    <button
+                    style={{ visibility: sessionUser.id === comment.userId ? "visible" : "hidden" }}>
+                        Edit
+                        </button>
+                    <button
+                    style={{ visibility: sessionUser.id === comment.userId ? "visible" : "hidden" }}
+                    >Delete</button>
                 </div>
             ))
             }

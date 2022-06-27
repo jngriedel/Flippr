@@ -20,6 +20,27 @@ const validateImage = [
 
 //get comments
 
+router.get('/',
+            asyncHandler(async (req, res)=>{
+
+                const images = await Image.findAll({
+                order: [
+                    ["createdAt", "DESC"],
+                  ],
+                })
+
+                res.json(images)
+            }))
+router.get('/:imageId',
+            asyncHandler(async (req, res)=>{
+              const {imageId} = req.params;
+                const image = await Image.findAll({
+               where:{id:imageId}
+                })
+
+                res.json(image)
+            }))
+
 router.get('/:imageId/comments',
             asyncHandler(async (req, res)=>{
                 const {imageId} = req.params;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {  useHistory, useParams } from 'react-router-dom';
-import {getImages, removeImage, editImage} from '../../store/images';
+import {getSingleImage, removeImage, editImage} from '../../store/images';
 import './ImagePage.css';
 import CommentsContainer from '../CommentsContainer';
 
@@ -21,7 +21,7 @@ function ImagePage() {
   const [description, setDescription] = useState(myImage?.content);
 
   useEffect(()=> {
-     dispatch(getImages(sessionUser.id))
+     dispatch(getSingleImage(imageId))
 
   },[])
 
@@ -63,7 +63,9 @@ const editDescription = (imageId) => {
             {!editContent &&
                     <>
                     <span>{myImage?.content}</span>
-                    <button onClick={()=>setEditContent(true)}>Edit Description</button>
+                    <button
+                    onClick={()=>setEditContent(true)}
+                    style={{visibility: myImage.userId === sessionUser.id ? "visible" : "hidden"}}>Edit Description</button>
                     </>
                         }
                     {editContent &&
@@ -81,7 +83,8 @@ const editDescription = (imageId) => {
                         </>
                         }
                     <div>
-                      <button onClick={()=>deleteImage(myImage.id)}>Delete</button>
+                      <button onClick={()=>deleteImage(myImage.id)}
+                      style={{visibility: myImage.userId === sessionUser.id ? "visible" : "hidden"}}>Delete</button>
 
                     </div>
 
