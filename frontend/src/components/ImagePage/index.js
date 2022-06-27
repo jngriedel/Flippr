@@ -5,6 +5,7 @@ import {getSingleImage, removeImage, editImage} from '../../store/images';
 import './ImagePage.css';
 import CommentsContainer from '../CommentsContainer';
 
+
 function ImagePage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
@@ -12,18 +13,21 @@ function ImagePage() {
   const userImages = Object.values(userImagesObj)
   const history = useHistory()
   const {imageId} = useParams()
-  const myImage = userImages.find((el)=>{
-    return el.id === +imageId
+  const myImage = userImages.find((image)=>{
+    return image.id === +imageId
   })
 
 
   const [editContent, setEditContent] = useState(false);
   const [description, setDescription] = useState(myImage?.content);
 
-  useEffect(()=> {
-     dispatch(getSingleImage(imageId))
 
-  },[])
+
+
+  useEffect(()=> {
+    dispatch(getSingleImage(imageId))
+
+  },[dispatch])
 
 
 
@@ -60,7 +64,7 @@ const editDescription = (imageId) => {
         }
     </div>
         <div className='single-image-details'>
-            {!editContent &&
+            {!editContent && myImage &&
                     <>
                     <span>{myImage?.content}</span>
                     <button
@@ -73,23 +77,26 @@ const editDescription = (imageId) => {
                     <form onSubmit={()=>editDescription(myImage.id)}>
                         <textarea
                         name='description'
-                        // value={description}
                         onChange={(e)=>{setDescription(e.target.value)}}
+                        value={description}
                         >{description}
                         </textarea>
-                        </form>
+                    </form>
                         <button onClick={()=>editDescription(myImage.id)}>Save</button>
-                        <button onClick={()=>setEditContent(false)}>Cancel</button>
+                        <button onClick={()=>{setEditContent(false);
+                        setDescription(myImage.content)}}>Cancel</button>
                         </>
                         }
+                    {myImage &&
                     <div>
                       <button onClick={()=>deleteImage(myImage.id)}
                       style={{visibility: myImage.userId === sessionUser.id ? "visible" : "hidden"}}>Delete</button>
 
-                    </div>
+                    </div>}
 
 
-                    <CommentsContainer imageId={5}/>
+
+                    <CommentsContainer imageId={imageId}/>
 
 
 

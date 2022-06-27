@@ -8,7 +8,7 @@ import './CommentsContainer.css'
 
 
 function CommentsContainer ({imageId}) {
-
+    const [editContent, setEditContent] = useState(false);
     const [showCommentButton, setShowCommentButton] = useState("hidden")
     const [body, setBody] = useState("")
     const sessionUser = useSelector(state => state.session.user);
@@ -23,21 +23,20 @@ function CommentsContainer ({imageId}) {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-
         const payload = {
             body,
             imageId,
             userId : sessionUser.id
         }
         const response = await dispatch(uploadComment(payload))
-
-
         if (response) {
-            setBody('')
+            setBody("")
             setShowCommentButton("hidden")
         }
+      }
 
-
+      const onDelete = (commentId) => {
+        dispatch(removeComment(commentId))
       }
 
 
@@ -57,6 +56,7 @@ function CommentsContainer ({imageId}) {
                         </button>
                     <button
                     style={{ visibility: sessionUser.id === comment.userId ? "visible" : "hidden" }}
+                    onClick={()=> onDelete(comment.id)}
                     >Delete</button>
                 </div>
             ))
@@ -69,6 +69,7 @@ function CommentsContainer ({imageId}) {
                 onFocus={()=>setShowCommentButton("visible")}
                 onBlur={()=>{if (!body)setShowCommentButton("hidden")}}
                 onChange={(e)=>{setBody(e.target.value)} }
+                value={body}
                 placeholder='Add a Comment'>
                     {body}
                 </textarea>
