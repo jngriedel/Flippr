@@ -9,7 +9,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import ImagePage from "./components/ImagePage";
 import HomePage from "./components/HomePage";
-
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +43,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }
