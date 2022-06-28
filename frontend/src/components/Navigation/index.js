@@ -12,7 +12,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
       <NavLink to='/images/upload'>
-      <i className="fa fa-cloud-upload" id="cloud-bttn" aria-hidden="true"></i>
+      <i className="fa fa-cloud-upload fa-2x" id="cloud-bttn" aria-hidden="true"></i>
       </NavLink>
       <ProfileButton user={sessionUser} />
       </>
@@ -37,7 +37,7 @@ function Navigation({ isLoaded }){
       </div>
     <ul id='rightsidenav'>
       <li>
-        <NavLink exact to="/"><i id='house-bttn' className="fa-solid fa-house"></i></NavLink>
+        {/* <NavLink exact to="/"><i id='house-bttn' className="fa-solid fa-house"></i></NavLink> */}
         {isLoaded && sessionLinks}
       </li>
     </ul>

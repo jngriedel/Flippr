@@ -63,49 +63,58 @@ const editDescription = async(e) => {
       <div className='view-single-image'>
 
         {
-            <div >
+            < >
                 <img className='image-alone' src={myImage?.imageUrl}/>
+                {myImage &&
+                    <div className='delete-holder'>
+                      <button id='img-delete' onClick={()=>deleteImage(myImage.id)}
+                      style={{visibility: myImage.userId === sessionUser?.id ? "visible" : "hidden"}}><i className="fa fa-trash fa-2x" aria-hidden="true"></i></button>
 
-            </div>
+                    </div>}
+            </>
 
         }
     </div>
         <div className='single-image-details'>
             {!editContent && myImage &&
-                    <>
-                    <span>{myImage?.content}</span>
-                    <button
-                    onClick={()=>setEditContent(true)}
-                    style={{visibility: myImage.userId === sessionUser?.id ? "visible" : "hidden"}}><i className="fas fa-edit"></i></button>
-                    </>
+                    <div className='image-detail-box'>
+                        <div className='username-box'>
+                            <h3>User Placeholder</h3>
+                        </div>
+                        <div className='description-and-button'>
+                            <span>{myImage?.content}</span>
+                            <button
+                            className='comment-hidden-bttn'
+                            onClick={()=>setEditContent(true)}
+                            style={{visibility: myImage.userId === sessionUser?.id ? "visible" : "hidden"}}><i className="fas fa-edit"></i></button>
+                        </div>
+                    </div>
                         }
 
 
             {editContent && myImage &&
             <>
-            <form onSubmit={editDescription}
-                  onBlur={()=>{setEditContent(false);
-                setDescription(myImage.content)}}>
-                <textarea
-                name='description'
-                onChange={(e)=>{setDescription(e.target.value)}}
+                  <form
+                      onSubmit={editDescription}
+                    //   onBlur={() => {
+                    //       setEditContent(false);
+                    //       setDescription(myImage.content)
+                    //   }}
+                      >
 
-
-                value={description}
-                >{description}
-                </textarea>
-                <button className='bttn' type='submit'>Done</button>
-            </form>
+                      <textarea
+                          name='description'
+                          onChange={(e) => {setDescription(e.target.value)}}
+                          value={description}
+                      >{description}
+                      </textarea>
+                      <button className='bttn' type='submit'>Done</button>
+                  </form>
 
 
                 </>
                 }
-                    {myImage &&
-                    <div>
-                      <button onClick={()=>deleteImage(myImage.id)}
-                      style={{visibility: myImage.userId === sessionUser?.id ? "visible" : "hidden"}}><i className="fa fa-trash" aria-hidden="true"></i></button>
 
-                    </div>}
 
 
 

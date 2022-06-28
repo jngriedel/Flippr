@@ -15,6 +15,10 @@ function LoginFormPage() {
     <Redirect to="/" />
   );
 
+  const demoUser = () => {
+    dispatch(sessionActions.login( {credential: 'demo@user.io', password: 'password'} ))
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -51,6 +55,7 @@ function LoginFormPage() {
       </label>
       <button className='bttn' type="submit">Log In</button>
     </form>
+    <button className='bttn' onClick={demoUser}>Demo User</button>
     </div>
   );
 }

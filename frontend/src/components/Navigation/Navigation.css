@@ -10,9 +10,10 @@ fa-camera {
     border-radius: 100%;
     cursor: pointer;
     background-color: rgb(252, 80, 252);
-    height: 30px;
-    width: 30px;
+    height: 33px;
+    width: 33px;
     margin-left: 30px;
+    margin-right: 20px;
 }
 
 .navbar {
@@ -45,9 +46,12 @@ fa-camera {
     text-decoration: none;
     color: black;
     font-size: 15px;
+    padding: 6px 20px;
 }
 .dropdown-options:hover {
     text-decoration: none;
+    background-color: rgba(241,241,241,255);
+
 
 
 }
@@ -58,6 +62,7 @@ fa-camera {
 }
 
 .other-menu-options {
+    padding: 12px 0px;
     display: flex;
     flex-direction: column;
 }
@@ -67,12 +72,15 @@ fa-camera {
 
 #dropdown-logout{
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    font-size: 15px;
     background: none;
     border: none;
     text-align: start;
+    padding: 6px 20px;
 }
 #dropdown-logout:hover{
     cursor: pointer;
+    background-color: rgba(241,241,241,255) ;
 }
 
 #signup-bttn {
@@ -107,7 +115,7 @@ fa-camera {
 }
 
 #house-bttn{
-    width: 50x;
+  width: 50x;
   height: 30px;
   color: #fff;
   margin-left: 30px;
@@ -177,4 +185,13 @@ h4 {
 
 p {
     margin-bottom: 0;
+}
+
+
+#rightsidenav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
 }
