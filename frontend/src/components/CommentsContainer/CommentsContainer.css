@@ -55,4 +55,20 @@ textarea:focus {
 
   .comments-container {
     margin-left: 70px;
+    margin-right: 20px;
+  }
+
+
+  .single-comment-container {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+  }
+
+  .single-comment-container:hover {
+    background-color: rgba(231,233,234,255);
+  }
+
+  .comment-bttns{
+
   }
