@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {getAllImages} from '../../store/images';
@@ -6,7 +6,7 @@ import {getAllImages} from '../../store/images';
 
 function HomePage() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
+//   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory()
 
 
@@ -14,7 +14,7 @@ function HomePage() {
 
     dispatch(getAllImages())
 
-  },[])
+  },[dispatch])
 
   const redirect = (imageId) => {
     history.push(`/images/${imageId}`)
@@ -38,7 +38,7 @@ function HomePage() {
             allImages.map((image)=> (
 
                 <div key={image.id} className='image-cameraroll-container'>
-                    <img onClick={()=>redirect(image.id)} className='image-cameraroll' src={image.imageUrl}/>
+                    <img alt={image.content} onClick={()=>redirect(image.id)} className='image-cameraroll' src={image.imageUrl}/>
                 </div>
             ))
             }

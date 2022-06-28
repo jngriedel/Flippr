@@ -30,6 +30,7 @@
     justify-content: flex-end;
     padding: 20px;
     margin-bottom: 20px;
+
 }
 
 .modal-cancel{
@@ -38,6 +39,7 @@
     cursor: pointer;
     border-style: none;
     border-radius: 0.20rem;
+    transition: .2s;
 }
 .modal-cancel:hover{
     -webkit-filter: brightness(105%);
@@ -58,6 +60,7 @@
     border-radius: 0.20rem;
     transition: background-color .2s;
     margin-left: 20px;
+    transition: .2s;
 
 }
 

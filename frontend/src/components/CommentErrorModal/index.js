@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Modal } from '../../context/Modal';
 import CommentErrorModal from './CommentErrorModal.js';
 

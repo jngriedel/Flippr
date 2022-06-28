@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {  useHistory, useParams } from 'react-router-dom';
 import {getSingleImage, removeImage, editImage} from '../../store/images';
@@ -28,7 +28,7 @@ function ImagePage() {
   useEffect(()=> {
     dispatch(getSingleImage(imageId))
 
-  },[dispatch])
+  },[dispatch,imageId])
 
  useEffect(()=> {
     if (myImage) {
@@ -64,7 +64,7 @@ const editDescription = async(e) => {
 
         {
             < >
-                <img className='image-alone' src={myImage?.imageUrl}/>
+                <img alt ={myImage?.content} className='image-alone' src={myImage?.imageUrl}/>
                 {myImage &&
                     <div className='delete-holder'>
                       <button id='img-delete' onClick={()=>deleteImage(myImage.id)}

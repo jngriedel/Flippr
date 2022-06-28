@@ -31,8 +31,8 @@ function Navigation({ isLoaded }){
     <div className='navbar'>
       <div className='logo-dots'>
         <NavLink to='/'>
-          <img id='dots' src='/images/flickrdots.png'></img>
-          <img id='logo' src='/images/flipprlogo.png'></img>
+          <img alt='logo dots' id='dots' src='/images/flickrdots.png'></img>
+          <img alt='logo' id='logo' src='/images/flipprlogo.png'></img>
         </NavLink>
       </div>
     <ul id='rightsidenav'>

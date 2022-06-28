@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editComment, removeComment,} from '../../store/comments';
-
+import CommentError from '../CommentErrorModal/index';
 
 
 
@@ -11,7 +11,7 @@ function SingleComment ({comment}) {
     const sessionUser = useSelector(state => state.session.user);
     const [editContent, setEditContent] = useState(false);
     const [currentComment, setCurrentComment] = useState(comment.body)
-
+    const [showModal, setShowModal] = useState(false);
     const onDelete = (commentId) => {
 
         let result = window.confirm("Delete this Comment?");
@@ -23,17 +23,27 @@ function SingleComment ({comment}) {
       }
 
 
-    const changeComment = async(e)=> {
+    const changeComment = (e)=> {
         e.preventDefault()
 
-        const response = await dispatch(editComment(comment.id, currentComment))
-        if (response) {
-        setEditContent(false)
-        }
+       dispatch(editComment(comment.id, currentComment))
+       .catch(async (res) => {
+        const data = await res.json();
+
+        if (data && data.errors){
+        setCurrentComment(comment.body)
+        if (!showModal) setShowModal((oldstate)=>{
+            return true});}
+      });
+
+      setEditContent(false)
+
+
     }
 
     return (
         <>
+          {showModal && <CommentError showModal={showModal} setShowModal={setShowModal} />}
             {!editContent &&
 
                 <div key={comment.id} className='single-comment-container'>
