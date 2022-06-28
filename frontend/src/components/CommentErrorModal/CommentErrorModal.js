@@ -8,8 +8,8 @@ return(
         <div className='ErrorTitle'>Error</div>
         <div className='ErrorMessage'>An empty comment box? That won't work!</div>
         <div className='modal-bttns'>
-        <button onClick={()=>setShowModal(false)}>Close</button>
-        <button className='bttn modalOK' onClick={()=>setShowModal(false)}>OK</button>
+        <button className='modal-cancel' onClick={()=>setShowModal(false)}>Close</button>
+        <button className='modal-OK' onClick={()=>setShowModal(false)}>OK</button>
         </div>
     </div>
 )
