@@ -20,14 +20,6 @@ function CommentsContainer ({imageId}) {
 
     const dispatch = useDispatch()
 
-    useEffect(()=> {
-        dispatch(getComments(imageId))
-    },[])
-
-    useEffect(()=> {
-        console.log(showModal)
-    },[setShowModal])
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const payload = {
@@ -41,7 +33,6 @@ function CommentsContainer ({imageId}) {
 
             if (data && data.errors){
 
-
             if (!showModal) setShowModal((oldstate)=>{
 
                 return true});}
@@ -51,6 +42,15 @@ function CommentsContainer ({imageId}) {
             setShowCommentButton("hidden")
 
       }
+
+
+    useEffect(()=> {
+        dispatch(getComments(imageId))
+    },[handleSubmit])
+
+    
+
+
 
 
 

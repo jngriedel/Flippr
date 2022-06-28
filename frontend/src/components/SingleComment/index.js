@@ -38,7 +38,7 @@ function SingleComment ({comment}) {
 
                 <div key={comment.id} className='single-comment-container'>
                     <div className='comment-and-user'>
-                        <h4 id='comment-user'>{comment.User.username}</h4>
+                        <h4 id='comment-user'>{comment.User?.username}</h4>
                         <div className='comment-body' >{comment.body}</div>
                     </div>
                     <div className='comment-bttns'>
