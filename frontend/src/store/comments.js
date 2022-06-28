@@ -53,7 +53,8 @@ export const uploadComment = (comment) => async dispatch => {
         body: JSON.stringify({
             userId,
             imageId,
-            body
+            body,
+           
         })
     })
     if (response.ok){

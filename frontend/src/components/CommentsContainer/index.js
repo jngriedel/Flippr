@@ -10,6 +10,7 @@ import CommentError from '../CommentErrorModal/index';
 
 
 
+
 function CommentsContainer ({imageId}) {
     const [showModal, setShowModal] = useState(false);
     const [showCommentButton, setShowCommentButton] = useState("hidden")
@@ -25,8 +26,9 @@ function CommentsContainer ({imageId}) {
         const payload = {
             body,
             imageId,
-            userId : sessionUser.id
+            userId : sessionUser.id,
         }
+
         dispatch(uploadComment(payload))
         .catch(async (res) => {
             const data = await res.json();
@@ -34,7 +36,6 @@ function CommentsContainer ({imageId}) {
             if (data && data.errors){
 
             if (!showModal) setShowModal((oldstate)=>{
-
                 return true});}
           });
 
@@ -46,9 +47,9 @@ function CommentsContainer ({imageId}) {
 
     useEffect(()=> {
         dispatch(getComments(imageId))
-    },[handleSubmit])
+    },[])
 
-    
+
 
 
 

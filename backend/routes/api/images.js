@@ -39,7 +39,7 @@ const validateImage = [
 
 router.get('/',
             asyncHandler(async (req, res)=>{
-              console.log('failed here')
+              
                 const images = await Image.findAll({
                 order: [
                     ["createdAt", "DESC"],
@@ -71,7 +71,7 @@ router.get('/:imageId/comments',
                   ],
                   include: 'User'
                 })
-                console.log(comments)
+
                 res.json(comments)
             }))
 

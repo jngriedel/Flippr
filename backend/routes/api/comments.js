@@ -32,16 +32,10 @@ router.post(
     asyncHandler(async (req, res) => {
       const { userId, imageId, body } = req.body;
 
-      if (!body) {
-
-      }
-
-
-
 
       const newComment = await Comment.create({ userId, imageId, body });
-
-      res.json(newComment)
+      const commentBack = await Comment.findByPk(newComment.id,{include: 'User'})
+      res.json(commentBack)
     }),
   );
 
