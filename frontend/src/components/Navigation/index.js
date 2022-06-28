@@ -20,9 +20,11 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
+      <div className='signup-or-in' >
         <NavLink id="login-bttn" to="/login">Log In</NavLink>
         <NavLink id="signup-bttn" to="/signup">Sign Up</NavLink>
         {/* <NavLink to='/images/upload'><i class="fa fa-cloud-upload" aria-hidden="true"></i></NavLink> */}
+      </div>
       </>
     );
   }
