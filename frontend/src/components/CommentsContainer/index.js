@@ -47,7 +47,7 @@ function CommentsContainer ({imageId}) {
 
     useEffect(()=> {
         dispatch(getComments(imageId))
-    },[])
+    },[dispatch,imageId])
 
 
 

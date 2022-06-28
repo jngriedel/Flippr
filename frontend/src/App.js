@@ -38,7 +38,7 @@ function App() {
           <Route path="/cameraroll">
             <CameraRoll />
           </Route>
-          <Route path="/images/:imageId">
+          <Route path="/images/:imageId" onLeave={()=>console.log('Im leaving')}>
             <ImagePage />
           </Route>
         </Switch>
