@@ -14,3 +14,31 @@ textarea:focus {
     border:1px solid rgba(0,141,223,255);
 
   }
+
+  .description-and-button {
+    margin-left: 70px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .username-box {
+    margin-left: 70px;
+    margin-right: 20px;
+  }
+  .description-and-button:hover {
+    background-color: rgba(231,233,234,255);
+  }
+
+
+  .comment-hidden-bttn{
+    background-color: transparent;
+    color: rgba(189,192,195,255);
+    border: none;
+  }
+  .comment-hidden-bttn:hover{
+    visibility: visible;
+    cursor: pointer;
+    color: rgba(142,147,150,255);
+  }
