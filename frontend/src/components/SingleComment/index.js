@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editComment, removeComment,} from '../../store/comments';
 import CommentError from '../CommentErrorModal/index';
