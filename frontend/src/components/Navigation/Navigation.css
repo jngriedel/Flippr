@@ -186,3 +186,12 @@ h4 {
 p {
     margin-bottom: 0;
 }
+
+
+#rightsidenav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
