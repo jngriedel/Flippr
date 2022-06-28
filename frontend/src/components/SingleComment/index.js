@@ -38,7 +38,7 @@ function SingleComment ({comment}) {
 
                 <div key={comment.id} className='single-comment-container'>
                     <div className='comment-and-user'>
-                        <h4>User Placeholder</h4>
+                        <h4>{comment.User.username}</h4>
                         <p className='image-cameraroll' >{comment.body}</p>
                     </div>
                     <div className='comment-bttns'>
@@ -66,7 +66,7 @@ function SingleComment ({comment}) {
                 >
                     <textarea
                         name='currentComment'
-                        
+
                         onChange={(e) => { setCurrentComment(e.target.value) }}
 
 

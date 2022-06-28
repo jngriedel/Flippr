@@ -68,6 +68,7 @@ router.get('/:imageId/comments',
                 order: [
                     ["createdAt", "DESC"],
                   ],
+                  include: 'User'
                 })
                 console.log(comments)
                 res.json(comments)

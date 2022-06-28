@@ -43,11 +43,9 @@ function CommentsContainer ({imageId}) {
 
 
             if (!showModal) setShowModal((oldstate)=>{
-                console.log('OLDSTATE***************',oldstate)
+
                 return true});}
           });
-
-
 
             setBody("")
             setShowCommentButton("hidden")
