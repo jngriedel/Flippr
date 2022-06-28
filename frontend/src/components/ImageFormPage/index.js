@@ -32,7 +32,7 @@ function ImageFormPage() {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       });
-      if (response.ok){
+      if (response){
      history.push('/cameraroll')
       }
   }
@@ -58,7 +58,7 @@ function ImageFormPage() {
           type="text"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          
+
         />
       </label>
       <button className='bttn' type="submit">Upload</button>
