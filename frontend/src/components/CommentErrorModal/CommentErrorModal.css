@@ -1,0 +1,67 @@
+.ERROR-MODAL {
+    height: 180px;
+    width: 620px;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 30%), 0 1px 4px rgb(0 0 0 / 20%);
+    min-width: 620px;
+    border-radius: 3px;
+}
+
+.ErrorTitle {
+    font-size: 18px;
+    padding: 19px 20px 16px;
+    line-height: 18px;
+}
+
+.ErrorMessage  {
+    font-weight: 400;
+  color: #212124;
+  line-height: 24px;
+  padding-left: 20px;
+  min-height: 60px;
+  overflow-y: auto;
+  padding-top: 0;
+  font-size: 14px;
+
+}
+
+.modal-bttns {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-cancel{
+    background-color: #979ea2;
+    color: #fff;
+    cursor: pointer;
+    border-style: none;
+    border-radius: 0.20rem;
+}
+.modal-cancel:hover{
+    -webkit-filter: brightness(105%);
+    filter: brightness(105%);
+}
+
+.modal-OK {
+    width: 80px;
+    height: 30px;
+    background-color:  #128fdc ;
+    color: #fff;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    cursor: pointer;
+    border-style: none;
+    border-radius: 0.20rem;
+    transition: background-color .2s;
+    margin-left: 20px;
+
+}
+
+.modal-OK:hover{
+    -webkit-filter: brightness(105%);
+  filter: brightness(105%);
+}

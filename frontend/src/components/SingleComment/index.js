@@ -37,16 +37,23 @@ function SingleComment ({comment}) {
             {!editContent &&
 
                 <div key={comment.id} className='single-comment-container'>
-                    <p className='image-cameraroll' >{comment.body}</p>
-                    <button
-                        style={{ visibility: sessionUser?.id === comment.userId ? "visible" : "hidden" }}
-                        onClick={()=>setEditContent(true)}>
-                        <i className="fas fa-edit"></i>
-                    </button>
-                    <button
-                        style={{ visibility: sessionUser?.id === comment.userId ? "visible" : "hidden" }}
-                        onClick={() => onDelete(comment.id)}
-                    ><i className="fa fa-trash" aria-hidden="true"></i></button>
+                    <div className='comment-and-user'>
+                        <h4 id='comment-user'>{comment.User.username}</h4>
+                        <div className='comment-body' >{comment.body}</div>
+                    </div>
+                    <div className='comment-bttns'>
+                        <button
+                            className='comment-hidden-bttn'
+                            style={{ visibility: sessionUser?.id === comment.userId ? "visible" : "hidden" }}
+                            onClick={()=>setEditContent(true)}>
+                            <i className="fas fa-edit"></i>
+                        </button>
+                        <button
+                            className='comment-hidden-bttn'
+                            style={{ visibility: sessionUser?.id === comment.userId ? "visible" : "hidden" }}
+                            onClick={() => onDelete(comment.id)}
+                        ><i className="fa fa-trash" aria-hidden="true"></i></button>
+                    </div>
                 </div>
             }
             {editContent &&
@@ -59,6 +66,7 @@ function SingleComment ({comment}) {
                 >
                     <textarea
                         name='currentComment'
+
                         onChange={(e) => { setCurrentComment(e.target.value) }}
 
 

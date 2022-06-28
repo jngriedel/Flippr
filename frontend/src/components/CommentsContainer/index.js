@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import {getComments,  uploadComment} from '../../store/comments';
 import './CommentsContainer.css'
 import SingleComment from '../SingleComment';
+import CommentError from '../CommentErrorModal/index';
 
 
 
 
 
 function CommentsContainer ({imageId}) {
-
+    const [showModal, setShowModal] = useState(false);
     const [showCommentButton, setShowCommentButton] = useState("hidden")
     const [body, setBody] = useState("")
     const sessionUser = useSelector(state => state.session.user);
@@ -23,18 +24,32 @@ function CommentsContainer ({imageId}) {
         dispatch(getComments(imageId))
     },[])
 
-    const handleSubmit = async(e) => {
+    useEffect(()=> {
+        console.log(showModal)
+    },[setShowModal])
+
+    const handleSubmit = (e) => {
         e.preventDefault();
         const payload = {
             body,
             imageId,
             userId : sessionUser.id
         }
-        const response = await dispatch(uploadComment(payload))
-        if (response) {
+        dispatch(uploadComment(payload))
+        .catch(async (res) => {
+            const data = await res.json();
+
+            if (data && data.errors){
+
+
+            if (!showModal) setShowModal((oldstate)=>{
+
+                return true});}
+          });
+
             setBody("")
             setShowCommentButton("hidden")
-        }
+
       }
 
 
@@ -44,6 +59,7 @@ function CommentsContainer ({imageId}) {
     return (
 
     <div className='comments-container'>
+        {showModal && <CommentError showModal={showModal} setShowModal={setShowModal} />}
         <div className='comments'>
             {
             comments &&
@@ -58,8 +74,9 @@ function CommentsContainer ({imageId}) {
             <form onSubmit={handleSubmit}>
                 <textarea
                 onFocus={()=>setShowCommentButton("visible")}
-                onBlur={()=>{if (!body)setShowCommentButton("hidden")}}
+                // onBlur={()=>{if (!body)setShowCommentButton("hidden")}}
                 onChange={(e)=>{setBody(e.target.value)} }
+                className='comment-textarea'
                 value={body}
                 placeholder='Add a Comment'>
                     {body}

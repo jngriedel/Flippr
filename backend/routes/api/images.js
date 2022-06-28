@@ -14,8 +14,24 @@ const router = express.Router();
 const validateImage = [
   check('imageUrl')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide an image URL.'),
-    
+    .withMessage('Please provide an image URL.')
+    .isLength({max:255})
+    .withMessage('Max length for url link is 255 characters.')
+    .custom(val => {
+      const checker1 = val.slice(val.length-4, val.length)
+      const checker2 = val.slice(val.length-5, val.length)
+
+      if(checker1 === '.jpg') return true
+      if(checker1 === '.png') return true
+      if(checker2 === '.webp') return true
+      if(checker2 === '.jpeg') return true
+
+      else {
+      return false
+      }
+   })
+   .withMessage('Please provide a valid image url. Image urls must end with .jpg, .jpeg, .png, or webp. '),
+
   handleValidationErrors
 ];
 
@@ -37,7 +53,8 @@ router.get('/:imageId',
             asyncHandler(async (req, res)=>{
               const {imageId} = req.params;
                 const image = await Image.findAll({
-               where:{id:imageId}
+               where:{id:imageId},
+               include: 'User'
                 })
 
                 res.json(image)
@@ -52,6 +69,7 @@ router.get('/:imageId/comments',
                 order: [
                     ["createdAt", "DESC"],
                   ],
+                  include: 'User'
                 })
                 console.log(comments)
                 res.json(comments)
@@ -76,7 +94,7 @@ router.put(
     asyncHandler(async (req, res) => {
       const { content  } = req.body;
       const {imageId} = req.params
-      const image = await Image.findByPk(+imageId)
+      const image = await Image.findByPk(+imageId, {include:'User'})
       console.log(image)
       const updated = await image.update({ content });
 

@@ -55,4 +55,36 @@ textarea:focus {
 
   .comments-container {
     margin-left: 70px;
+    margin-right: 20px;
+  }
+
+
+  .single-comment-container {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   margin-bottom: 10px;
+  }
+
+  .single-comment-container:hover {
+    background-color: rgba(231,233,234,255);
+  }
+
+  .comment-textarea{
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  #comment-user{
+    color: #006dac;
+    line-height: 24px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .comment-body{
+    font-weight: 400;
+    line-height: 18px;
+    font-size: 14px;
+    margin-top: -5px;
   }

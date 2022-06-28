@@ -33,7 +33,7 @@ router.post(
       const { userId, imageId, body } = req.body;
 
       if (!body) {
-        
+
       }
 
 
@@ -52,7 +52,7 @@ router.put(
     asyncHandler(async (req, res) => {
       const { body  } = req.body;
       const {commentId} = req.params
-      const comment = await Comment.findByPk(+commentId)
+      const comment = await Comment.findByPk(+commentId, {include: 'User'})
 
       const updated = await  comment.update({ body });
 

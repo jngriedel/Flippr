@@ -19,7 +19,7 @@ function ImageFormPage() {
   }
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
     const payload = {
@@ -27,17 +27,18 @@ function ImageFormPage() {
         content,
         userId : sessionUser.id
     }
-    dispatch(uploadImage(payload))
+    const response = await dispatch(uploadImage(payload))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       });
-
+      if (response){
      history.push('/cameraroll')
+      }
   }
 
   return (
-    <div  >
+    <div >
     <form className='submit-image-form' onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, i) => <li key={i}>{error}</li>)}
@@ -57,7 +58,7 @@ function ImageFormPage() {
           type="text"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          required
+
         />
       </label>
       <button className='bttn' type="submit">Upload</button>
