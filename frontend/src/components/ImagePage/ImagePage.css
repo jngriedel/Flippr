@@ -37,3 +37,9 @@
     position: relative;
     align-self: flex-end;
 }
+
+
+.image-detail-box{
+   
+    padding: 10px 0px;
+}

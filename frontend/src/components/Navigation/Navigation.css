@@ -10,9 +10,10 @@ fa-camera {
     border-radius: 100%;
     cursor: pointer;
     background-color: rgb(252, 80, 252);
-    height: 30px;
-    width: 30px;
+    height: 33px;
+    width: 33px;
     margin-left: 30px;
+    margin-right: 20px;
 }
 
 .navbar {
@@ -114,7 +115,7 @@ fa-camera {
 }
 
 #house-bttn{
-    width: 50x;
+  width: 50x;
   height: 30px;
   color: #fff;
   margin-left: 30px;

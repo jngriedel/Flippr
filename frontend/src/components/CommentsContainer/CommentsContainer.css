@@ -21,6 +21,8 @@ textarea:focus {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border-bottom: 1px #e1e1e1 solid;
+    padding-bottom: 10px;
   }
 
   .description-and-button > .comment-hidden-bttn{
