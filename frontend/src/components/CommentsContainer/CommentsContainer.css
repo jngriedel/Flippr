@@ -51,3 +51,8 @@ textarea:focus {
     cursor: pointer;
     color: rgba(142,147,150,255);
   }
+
+
+  .comments-container {
+    margin-left: 70px;
+  }
