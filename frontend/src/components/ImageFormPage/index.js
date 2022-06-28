@@ -60,7 +60,7 @@ function ImageFormPage() {
           required
         />
       </label>
-      <button className='login-bttn' type="submit">Upload</button>
+      <button className='bttn' type="submit">Upload</button>
     </form>
     </div>
   );
