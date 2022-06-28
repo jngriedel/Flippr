@@ -1,0 +1,4 @@
+.submit-image-form {
+    display: flex;
+    flex-direction: column;
+}

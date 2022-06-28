@@ -46,3 +46,8 @@ label {
     align-items: center;
     justify-content: center;
 }
+
+.login-whole-page{
+    display: flex;
+    flex-direction: column;
+}

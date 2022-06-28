@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import {uploadImage} from '../../store/images';
-// import './ImageForm.css';
+import './ImageFormPage.css';
 
 function ImageFormPage() {
   const dispatch = useDispatch();
@@ -37,8 +37,8 @@ function ImageFormPage() {
   }
 
   return (
-    <div >
-    <form className='' onSubmit={handleSubmit}>
+    <div  >
+    <form className='submit-image-form' onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, i) => <li key={i}>{error}</li>)}
       </ul>

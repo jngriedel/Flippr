@@ -15,6 +15,7 @@ const validateImage = [
   check('imageUrl')
     .exists({ checkFalsy: true })
     .withMessage('Please provide an image URL.'),
+    
   handleValidationErrors
 ];
 
