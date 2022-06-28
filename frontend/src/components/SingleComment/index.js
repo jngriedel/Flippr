@@ -52,10 +52,11 @@ function SingleComment ({comment}) {
             {editContent &&
             <>
                 <form onSubmit={changeComment}
-                onBlur={() => {
-                    setEditContent(false);
-                    setCurrentComment(comment.body)
-                }}>
+                // onBlur={() => {
+                //     setEditContent(false);
+                //     setCurrentComment(comment.body)
+                // }}
+                >
                     <textarea
                         name='currentComment'
                         onChange={(e) => { setCurrentComment(e.target.value) }}

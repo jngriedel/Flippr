@@ -45,9 +45,12 @@ fa-camera {
     text-decoration: none;
     color: black;
     font-size: 15px;
+    padding: 6px 20px;
 }
 .dropdown-options:hover {
     text-decoration: none;
+    background-color: rgba(241,241,241,255);
+
 
 
 }
@@ -58,6 +61,7 @@ fa-camera {
 }
 
 .other-menu-options {
+    padding: 12px 0px;
     display: flex;
     flex-direction: column;
 }
@@ -67,12 +71,15 @@ fa-camera {
 
 #dropdown-logout{
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    font-size: 15px;
     background: none;
     border: none;
     text-align: start;
+    padding: 6px 20px;
 }
 #dropdown-logout:hover{
     cursor: pointer;
+    background-color: rgba(241,241,241,255) ;
 }
 
 #signup-bttn {
