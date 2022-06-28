@@ -38,7 +38,7 @@ function ImageFormPage() {
   }
 
   return (
-    <div  >
+    <div >
     <form className='submit-image-form' onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, i) => <li key={i}>{error}</li>)}

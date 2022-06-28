@@ -61,6 +61,9 @@ export const uploadComment = (comment) => async dispatch => {
     dispatch(addComment(data))
     return data
     }
+    // else {
+    //     return response
+    // }
 }
 export const removeComment = (commentId) => async dispatch => {
 
