@@ -76,10 +76,10 @@ const editDescription = async(e) => {
         }
     </div>
         <div className='single-image-details'>
-            {!editContent && myImage &&
+            {!editContent && myImage.User &&
                     <div className='image-detail-box'>
                         <div className='username-box'>
-                            <h3>User Placeholder</h3>
+                            <h3>{myImage.User.username}</h3>
                         </div>
                         <div className='description-and-button'>
                             <span>{myImage?.content}</span>

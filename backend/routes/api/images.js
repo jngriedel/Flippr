@@ -53,7 +53,8 @@ router.get('/:imageId',
             asyncHandler(async (req, res)=>{
               const {imageId} = req.params;
                 const image = await Image.findAll({
-               where:{id:imageId}
+               where:{id:imageId},
+               include: 'User'
                 })
 
                 res.json(image)
@@ -93,7 +94,7 @@ router.put(
     asyncHandler(async (req, res) => {
       const { content  } = req.body;
       const {imageId} = req.params
-      const image = await Image.findByPk(+imageId)
+      const image = await Image.findByPk(+imageId, {include:'User'})
       console.log(image)
       const updated = await image.update({ content });
 
