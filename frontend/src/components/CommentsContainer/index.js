@@ -60,6 +60,7 @@ function CommentsContainer ({imageId}) {
                 onFocus={()=>setShowCommentButton("visible")}
                 onBlur={()=>{if (!body)setShowCommentButton("hidden")}}
                 onChange={(e)=>{setBody(e.target.value)} }
+                className='comment-textarea'
                 value={body}
                 placeholder='Add a Comment'>
                     {body}

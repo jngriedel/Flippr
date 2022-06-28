@@ -66,6 +66,7 @@ function SingleComment ({comment}) {
                 >
                     <textarea
                         name='currentComment'
+                        
                         onChange={(e) => { setCurrentComment(e.target.value) }}
 
 

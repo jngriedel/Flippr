@@ -69,6 +69,7 @@ textarea:focus {
     background-color: rgba(231,233,234,255);
   }
 
-  .comment-bttns{
-
+  .comment-textarea{
+    margin-top: 15px;
+    width: 100%;
   }

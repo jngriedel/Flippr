@@ -129,7 +129,7 @@ const imageReducer = (state = initialState, action) => {
         return newState;
       }
       case LOAD: {
-        const newState = {...state}
+        const newState = {}
          action.payload.forEach((image)=> {
             newState[image.id] = image
          })
