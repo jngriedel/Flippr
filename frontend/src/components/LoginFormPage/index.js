@@ -39,7 +39,7 @@ function LoginFormPage() {
       <GenericError setShowModal={setShowModal} showModal={showModal} errors={errors} />
       <div className='login-form-box'>
         <img id='login-dots' alt='flickr dots' src='./images/flickrdots.png'/>
-        <div>Log in to Flippr</div>
+        <div id='login-mssg'>Log in to Flippr</div>
     <form className='signup-login' onSubmit={handleSubmit}>
       <label htmlFor='user'>
         Username or Email
@@ -65,7 +65,7 @@ function LoginFormPage() {
 
       <button className='bttn' type="submit">Log In</button>
     </form>
-    <button className='bttn' onClick={demoUser}>Demo User</button>
+    <button className='bttn demouser-bttn' onClick={demoUser}>Demo User</button>
     </div>
     </div>
   );

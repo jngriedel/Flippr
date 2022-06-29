@@ -70,8 +70,23 @@ label {
     justify-content: center;
     align-items: center;
 }
+.signup-login > label {
+    margin-top: 10px;
+}
+.signup-login > button {
+    margin-top: 32px;
+}
 
 #login-dots{
     height: 23px;
     width: 23px;
+    margin-bottom: 5px;
+}
+
+.demouser-bttn{
+    margin-top: 20px;
+}
+
+#login-mssg{
+    margin-bottom: 20px;
 }
