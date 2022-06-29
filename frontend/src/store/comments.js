@@ -5,6 +5,12 @@ const ADD_COMMENT = 'comments/addComment'
 const DELETE_COMMENT = 'comments/deleteComment'
 const UPDATE_COMMENT = 'comments/updateComment'
 const LOAD = 'comments/loadComments'
+const CLEAR = 'comments/clear'
+
+
+export const clearComments = () => ({
+    type: CLEAR
+});
 
 const loadComments = list => ({
     type: LOAD,
@@ -54,7 +60,7 @@ export const uploadComment = (comment) => async dispatch => {
             userId,
             imageId,
             body,
-           
+
         })
     })
     if (response.ok){
@@ -122,6 +128,9 @@ const commentsReducer = (state = initialState, action) => {
         const newState = {...state}
         newState[action.payload.id] = action.payload
         return newState;
+      }
+      case CLEAR: {
+        return {};
       }
       default:
         return state;

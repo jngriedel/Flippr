@@ -72,7 +72,7 @@ function CommentsContainer ({imageId}) {
         </div>
         { sessionUser &&
         <div className='comment-input'>
-            <form onSubmit={handleSubmit}>
+            <form className='add-comment-form' onSubmit={handleSubmit}>
                 <textarea
                 onFocus={()=>setShowCommentButton("visible")}
                 // onBlur={()=>{if (!body)setShowCommentButton("hidden")}}
@@ -82,9 +82,14 @@ function CommentsContainer ({imageId}) {
                 placeholder='Add a Comment'>
                     {body}
                 </textarea>
-                <button className='bttn'
-                style={{ visibility: showCommentButton }}
-                type='submit'  >Comment</button>
+                <div className='add-comment-bttn-box'>
+                    <button className='bttn'
+                    id='add-comment-bttn'
+                    style={{ visibility: showCommentButton }}
+                    type='submit'
+                     > Comment
+                    </button>
+                </div>
             </form>
         </div>}
     </div>

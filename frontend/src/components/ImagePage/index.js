@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {  useHistory, useParams } from 'react-router-dom';
-import {getSingleImage, removeImage, editImage} from '../../store/images';
+import {getSingleImage, removeImage, editImage, getAllImages} from '../../store/images';
 import './ImagePage.css';
 import CommentsContainer from '../CommentsContainer';
 
@@ -9,13 +9,12 @@ import CommentsContainer from '../CommentsContainer';
 function ImagePage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const userImagesObj = useSelector(state => state.images)
-  const userImages = Object.values(userImagesObj)
-  const history = useHistory()
   const {imageId} = useParams()
-  const myImage = userImages.find((image)=>{
-    return image.id === +imageId
-  })
+  const myImage = useSelector(state => state.images[imageId])
+
+
+  const history = useHistory()
+
 
 
   const [editContent, setEditContent] = useState(false);
@@ -26,7 +25,7 @@ function ImagePage() {
 
 
   useEffect(()=> {
-    dispatch(getSingleImage(imageId))
+    dispatch(getAllImages())
 
   },[dispatch,imageId])
 
@@ -59,6 +58,7 @@ const editDescription = async(e) => {
 
 
   return (
+
     <div id='image-page'>
       <div className='view-single-image'>
 
@@ -76,24 +76,25 @@ const editDescription = async(e) => {
         }
     </div>
         <div className='single-image-details'>
-            {!editContent && myImage &&
+            {myImage &&
                     <div className='image-detail-box'>
                         <div className='username-box'>
                             <h3 >{myImage.User?.username}</h3>
                         </div>
+                        {!editContent &&
                         <div className='description-and-button'>
                             <span>{myImage?.content}</span>
                             <button
                             className='comment-hidden-bttn'
                             onClick={()=>setEditContent(true)}
                             style={{visibility: myImage.userId === sessionUser?.id ? "visible" : "hidden"}}><i className="fas fa-edit"></i></button>
-                        </div>
+                        </div> }
                     </div>
                         }
 
 
-            {editContent && myImage &&
-            <>
+            {editContent &&
+            <div className='edit-description-box'>
                   <form
                       onSubmit={editDescription}
                     //   onBlur={() => {
@@ -103,24 +104,23 @@ const editDescription = async(e) => {
                       >
 
                       <textarea
+                          className='description-textarea'
                           name='description'
                           onChange={(e) => {setDescription(e.target.value)}}
                           value={description}
                       >{description}
                       </textarea>
-                      <button className='bttn' type='submit'>Done</button>
+                      <div className='edit-description-bttn-box'>
+                         <button id='edit-description-bttn' className='bttn' type='submit'>Done</button>
+                      </div>
+
                   </form>
 
 
-                </>
+                </div>
                 }
 
-
-
-
-                    <CommentsContainer imageId={imageId}/>
-
-
+                <CommentsContainer imageId={imageId}/>
 
         </div>
     </div>

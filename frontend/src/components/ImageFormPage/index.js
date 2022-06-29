@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import {uploadImage} from '../../store/images';
 import './ImageFormPage.css';
+import GenericError from '../GenericErrorModal';
 
 function ImageFormPage() {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ function ImageFormPage() {
   const [imageUrl, setImageUrl] = useState('');
   const [content, setContent] = useState('');
   const [errors, setErrors] = useState([]);
+  const [showModal, setShowModal] = useState(false)
   const history = useHistory()
 
   if (!sessionUser) { return (
@@ -30,7 +32,8 @@ function ImageFormPage() {
     const response = await dispatch(uploadImage(payload))
       .catch(async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        if (data && data.errors){ setErrors(data.errors)
+            setShowModal(true)   };
       });
       if (response){
      history.push('/cameraroll')
@@ -38,31 +41,35 @@ function ImageFormPage() {
   }
 
   return (
-    <div >
-    <form className='submit-image-form' onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, i) => <li key={i}>{error}</li>)}
-      </ul>
-      <label>
+    <div className='imagesubmit-main'>
+        <GenericError setShowModal={setShowModal} showModal={showModal} errors={errors} />
+        <div className='login-form-box'>
+    <form className='signup-login' onSubmit={handleSubmit}>
+      <label htmlFor='imageUrl'>
         Image URL
+        </label>
         <input
           type="text"
+          name='imageUrl'
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
           required
         />
-      </label>
-      <label>
+
+      <label htmlFor='content'>
         Describe Your Image
+        </label>
         <input
           type="text"
+          name='content'
           value={content}
           onChange={(e) => setContent(e.target.value)}
 
         />
-      </label>
+
       <button className='bttn' type="submit">Upload</button>
     </form>
+    </div>
     </div>
   );
 }

@@ -30,7 +30,7 @@ const validateImage = [
       return false
       }
    })
-   .withMessage('Please provide a valid image url. Image urls must end with .jpg, .jpeg, .png, or webp. '),
+   .withMessage('Please provide a valid image url. Image urls must end with .jpg, .jpeg, .png, or .webp. '),
 
   handleValidationErrors
 ];
@@ -39,11 +39,12 @@ const validateImage = [
 
 router.get('/',
             asyncHandler(async (req, res)=>{
-              
+
                 const images = await Image.findAll({
                 order: [
                     ["createdAt", "DESC"],
                   ],
+                  include: 'User'
                 })
 
                 res.json(images)

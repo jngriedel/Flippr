@@ -8,6 +8,9 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    /* position:absolute; */
+    bottom: 0;
+    width: 100%;
 }
 
 
@@ -15,7 +18,7 @@
   text-align: center;
   line-height: 1.5;
   margin-top: 0;
-  
+
   font-size: 14px;
   color: hsla(0,0%,100%,.6);
 

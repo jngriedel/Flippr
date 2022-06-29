@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
+
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
@@ -20,9 +21,11 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
+      <div className='signup-or-in' >
         <NavLink id="login-bttn" to="/login">Log In</NavLink>
         <NavLink id="signup-bttn" to="/signup">Sign Up</NavLink>
         {/* <NavLink to='/images/upload'><i class="fa fa-cloud-upload" aria-hidden="true"></i></NavLink> */}
+      </div>
       </>
     );
   }
@@ -30,7 +33,7 @@ function Navigation({ isLoaded }){
   return (
     <div className='navbar'>
       <div className='logo-dots'>
-        <NavLink to='/'>
+        <NavLink to='/' >
           <img alt='logo dots' id='dots' src='/images/flickrdots.png'></img>
           <img alt='logo' id='logo' src='/images/flipprlogo.png'></img>
         </NavLink>
