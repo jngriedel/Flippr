@@ -12,6 +12,7 @@ function SingleComment ({comment}) {
     const [editContent, setEditContent] = useState(false);
     const [currentComment, setCurrentComment] = useState(comment.body)
     const [showModal, setShowModal] = useState(false);
+    
     const onDelete = (commentId) => {
 
         let result = window.confirm("Delete this Comment?");

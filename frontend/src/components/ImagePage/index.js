@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {  useHistory, useParams } from 'react-router-dom';
-import {getSingleImage, removeImage, editImage} from '../../store/images';
+import {getSingleImage, removeImage, editImage, getAllImages} from '../../store/images';
 import './ImagePage.css';
 import CommentsContainer from '../CommentsContainer';
 
@@ -9,13 +9,14 @@ import CommentsContainer from '../CommentsContainer';
 function ImagePage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const userImagesObj = useSelector(state => state.images)
-  const userImages = Object.values(userImagesObj)
-  const history = useHistory()
   const {imageId} = useParams()
-  const myImage = userImages.find((image)=>{
-    return image.id === +imageId
-  })
+  const myImage = useSelector(state => state.images[imageId])
+  
+//   const my = Object.values(userImagesObj)
+  const history = useHistory()
+//   const myImage = userImages.find((image)=>{
+//     return image.id === +imageId
+//   })
 
 
   const [editContent, setEditContent] = useState(false);
@@ -26,7 +27,7 @@ function ImagePage() {
 
 
   useEffect(()=> {
-    dispatch(getSingleImage(imageId))
+    dispatch(getAllImages())
 
   },[dispatch,imageId])
 
@@ -59,6 +60,7 @@ const editDescription = async(e) => {
 
 
   return (
+
     <div id='image-page'>
       <div className='view-single-image'>
 

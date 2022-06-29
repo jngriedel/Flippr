@@ -47,7 +47,31 @@ label {
     justify-content: center;
 }
 
-.login-whole-page{
+
+.login-main {
+    background-image: url(https://wallpaperaccess.com/full/1325025.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:84vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.login-form-box{
+    background-color: white;
+    padding: 1.5rem;
+    width: 16rem;
+    border-radius: .25rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-dots{
+    height: 23px;
+    width: 23px;
 }

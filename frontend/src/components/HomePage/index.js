@@ -2,7 +2,7 @@ import React, {  useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {getAllImages} from '../../store/images';
-
+import {clearComments} from '../../store/comments'
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -13,6 +13,7 @@ function HomePage() {
   useEffect(()=> {
 
     dispatch(getAllImages())
+    dispatch(clearComments())
 
   },[dispatch])
 

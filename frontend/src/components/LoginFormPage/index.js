@@ -3,6 +3,9 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.css';
+import GenericError from '../GenericErrorModal';
+
+
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -10,6 +13,7 @@ function LoginFormPage() {
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
+  const [showModal, setShowModal] = useState(false)
 
   if (sessionUser) return (
     <Redirect to="/" />
@@ -25,37 +29,44 @@ function LoginFormPage() {
     return dispatch(sessionActions.login({ credential, password }))
       .catch(async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        if (data && data.errors){ setErrors(data.errors)
+                                 setShowModal(true)   };
       });
   }
 
   return (
-    <div >
+    <div className='login-main' >
+      <GenericError setShowModal={setShowModal} showModal={showModal} errors={errors} />
+      <div className='login-form-box'>
+        <img id='login-dots' alt='flickr dots' src='./images/flickrdots.png'/>
+        <div>Log in to Flippr</div>
     <form className='signup-login' onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
+      <label htmlFor='user'>
         Username or Email
+        </label>
         <input
           type="text"
+          name='user'
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
-          required
+
         />
-      </label>
-      <label>
+
+      <label htmlFor='password'>
         Password
+        </label>
         <input
+          name='password'
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
+
         />
-      </label>
+
       <button className='bttn' type="submit">Log In</button>
     </form>
     <button className='bttn' onClick={demoUser}>Demo User</button>
+    </div>
     </div>
   );
 }
