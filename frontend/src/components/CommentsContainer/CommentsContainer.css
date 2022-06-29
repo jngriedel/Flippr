@@ -70,9 +70,15 @@ textarea:focus {
     background-color: rgba(231,233,234,255);
   }
 
-  .comment-textarea{
+
+  .description-texarea{
     margin-top: 15px;
     width: 100%;
+    box-sizing: border-box;
+  }
+  .comment-textarea{
+    width: 100%;
+    box-sizing: border-box;
   }
 
   #comment-user{
@@ -87,4 +93,20 @@ textarea:focus {
     line-height: 18px;
     font-size: 14px;
     margin-top: -5px;
+  }
+
+  #add-comment-bttn,
+  #edit-comment-bttn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+  }
+
+  .add-comment-bttn-box,
+  .edit-comment-bttn-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0;
+
   }

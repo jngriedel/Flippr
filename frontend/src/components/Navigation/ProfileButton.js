@@ -41,7 +41,7 @@ function ProfileButton({ user }) {
         <>
         <div className="greeting-box">
           <div className="intro-message">
-          <h4>{'Hello, '}</h4><NavLink id='profile-link' to="/cameraroll"> {user.username}</NavLink>
+          <h4>{'Hello,'}</h4><div>&nbsp;</div><NavLink id='profile-link' to="/cameraroll"> {user.username}</NavLink>
           <h4>!</h4>
 
           </div>

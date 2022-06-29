@@ -12,7 +12,7 @@ function SingleComment ({comment}) {
     const [editContent, setEditContent] = useState(false);
     const [currentComment, setCurrentComment] = useState(comment.body)
     const [showModal, setShowModal] = useState(false);
-    
+
     const onDelete = (commentId) => {
 
         let result = window.confirm("Delete this Comment?");
@@ -45,13 +45,15 @@ function SingleComment ({comment}) {
     return (
         <>
           {showModal && <CommentError showModal={showModal} setShowModal={setShowModal} />}
-            {!editContent &&
 
                 <div key={comment.id} className='single-comment-container'>
                     <div className='comment-and-user'>
                         <h4 id='comment-user'>{comment.User?.username}</h4>
-                        <div className='comment-body' >{comment.body}</div>
+                        {!editContent &&
+                            <div className='comment-body' >{comment.body}</div>
+                        }
                     </div>
+                    {!editContent &&
                     <div className='comment-bttns'>
                         <button
                             className='comment-hidden-bttn'
@@ -65,8 +67,9 @@ function SingleComment ({comment}) {
                             onClick={() => onDelete(comment.id)}
                         ><i className="fa fa-trash" aria-hidden="true"></i></button>
                     </div>
+                    }
                 </div>
-            }
+
             {editContent &&
             <>
                 <form onSubmit={changeComment}
@@ -75,7 +78,7 @@ function SingleComment ({comment}) {
                 //     setCurrentComment(comment.body)
                 // }}
                 >
-                    <textarea
+                    <textarea className='comment-textarea'
                         name='currentComment'
 
                         onChange={(e) => { setCurrentComment(e.target.value) }}
@@ -84,7 +87,9 @@ function SingleComment ({comment}) {
                         value={currentComment}
                     >{currentComment}
                     </textarea>
-                    <button className='bttn' type='submit'>Done</button>
+                    <div className='add-comment-bttn-box'>
+                        <button id='edit-comment-bttn' className='bttn' type='submit'>Done</button>
+                    </div>
                 </form>
 
             </>

@@ -11,12 +11,10 @@ function ImagePage() {
   const sessionUser = useSelector(state => state.session.user);
   const {imageId} = useParams()
   const myImage = useSelector(state => state.images[imageId])
-  
-//   const my = Object.values(userImagesObj)
+
+
   const history = useHistory()
-//   const myImage = userImages.find((image)=>{
-//     return image.id === +imageId
-//   })
+
 
 
   const [editContent, setEditContent] = useState(false);
@@ -78,23 +76,24 @@ const editDescription = async(e) => {
         }
     </div>
         <div className='single-image-details'>
-            {!editContent && myImage &&
+            {myImage &&
                     <div className='image-detail-box'>
                         <div className='username-box'>
                             <h3 >{myImage.User?.username}</h3>
                         </div>
+                        {!editContent &&
                         <div className='description-and-button'>
                             <span>{myImage?.content}</span>
                             <button
                             className='comment-hidden-bttn'
                             onClick={()=>setEditContent(true)}
                             style={{visibility: myImage.userId === sessionUser?.id ? "visible" : "hidden"}}><i className="fas fa-edit"></i></button>
-                        </div>
+                        </div> }
                     </div>
                         }
 
 
-            {editContent && myImage &&
+            {editContent &&
             <>
                   <form
                       onSubmit={editDescription}
@@ -105,6 +104,7 @@ const editDescription = async(e) => {
                       >
 
                       <textarea
+                          className='description-textarea'
                           name='description'
                           onChange={(e) => {setDescription(e.target.value)}}
                           value={description}
@@ -117,12 +117,7 @@ const editDescription = async(e) => {
                 </>
                 }
 
-
-
-
                     <CommentsContainer imageId={imageId}/>
-
-
 
         </div>
     </div>
