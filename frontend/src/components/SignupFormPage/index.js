@@ -29,48 +29,62 @@ function SignupFormPage() {
   };
 
   return (
-    <form className="sign-up-form" onSubmit={handleSubmit}>
+    <div className="login-main">
+      <div className='login-form-box'>
+        <img id='login-dots' alt='flickr dots' src='./images/flickrdots.png'/>
+        <div id='login-mssg'>Sign up for Flippr</div>
+    <form className="signup-login" onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label>
+      <label htmlFor="email" >
         Email
+        </label>
         <input
           type="text"
+          name='email'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-      </label>
-      <label>
+
+      <label htmlFor="username">
         Username
+        </label>
         <input
           type="text"
+          name="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
-      </label>
-      <label>
+
+      <label htmlFor="password">
         Password
+        </label>
         <input
           type="password"
+          name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </label>
-      <label>
+
+      <label htmlFor="confirmpassword">
         Confirm Password
+        </label>
         <input
           type="password"
+          name="confirmpassword"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
-      </label>
-      <button className='bttn' type="submit">Sign Up</button>
-    </form>
+
+        <button className='bttn' type="submit">Sign Up</button>
+      </form>
+      </div>
+    </div>
   );
 }
 

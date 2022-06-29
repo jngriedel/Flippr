@@ -70,9 +70,12 @@ label {
     justify-content: center;
     align-items: center;
 }
+
 .signup-login > label {
     margin-top: 10px;
 }
+
+
 .signup-login > button {
     margin-top: 32px;
 }

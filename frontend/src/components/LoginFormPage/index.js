@@ -49,6 +49,7 @@ function LoginFormPage() {
           name='user'
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
+          required
 
         />
 
@@ -60,6 +61,7 @@ function LoginFormPage() {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
 
         />
 
