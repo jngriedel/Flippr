@@ -5,7 +5,7 @@ function GenericErrorModal ({setShowModal, errors}) {
 
 return(
     <div className="ERROR-MODAL">
-        <div className='ErrorTitle'>Login Error</div>
+        <div className='ErrorTitle'>Error</div>
         {errors.map((error,i)=>{
            return <div key={i} className='ErrorMessage'>{error}</div>
         })}
