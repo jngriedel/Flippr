@@ -30,7 +30,13 @@ function CameraRoll() {
 
   return (
     <div className='cameraroll-main'>
-        <div className='banner-cameraroll'></div>
+        <div className='banner-cameraroll'>
+            <h1 id='cameraroll-username'>{sessionUser.username}</h1>
+
+        </div>
+        <div className='cameraroll-label'>
+            Camera Roll
+        </div>
         <div className='all-cameraroll-images'>
 
             {
