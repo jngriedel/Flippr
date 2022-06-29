@@ -44,6 +44,7 @@ router.get('/',
                 order: [
                     ["createdAt", "DESC"],
                   ],
+                  include: 'User'
                 })
 
                 res.json(images)
