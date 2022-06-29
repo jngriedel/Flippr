@@ -10,6 +10,7 @@ import Navigation from "./components/Navigation";
 import ImagePage from "./components/ImagePage";
 import HomePage from "./components/HomePage";
 import Footer from "./components/Footer";
+import Splash from "./components/HomePage/Splash";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,9 @@ function App() {
           </Route>
           <Route path="/images/:imageId" onLeave={()=>console.log('Im leaving')}>
             <ImagePage />
+          </Route>
+          <Route path='/splash'>
+            <Splash/>
           </Route>
         </Switch>
       )}
