@@ -33,8 +33,12 @@ function CameraRoll() {
         <div className='banner-cameraroll'>
             <div className='banner-info'>
             <h1 id='cameraroll-username'>{sessionUser.username}</h1>
-            <p id='cameraroll-photocount'>{userImages?.length} {userImages?.length === 1 && 'Photo'} {userImages.length === 0 || userImages.length > 1 &&
-            'Photos'}</p>
+            <p id='cameraroll-photocount'>{userImages?.length}
+            {userImages?.length === 1 && ' Photo'}
+            { userImages.length > 1 &&
+            ' Photos'}
+            {userImages.length === 0 && ' Photos'}
+            </p>
             </div>
         </div>
         <div className='cameraroll-label'>
