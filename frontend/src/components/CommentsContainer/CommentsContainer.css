@@ -26,6 +26,13 @@ textarea:focus {
     padding-bottom: 10px;
   }
 
+  .description-and-button > p {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #898989;
+  }
+
   .description-and-button > .comment-hidden-bttn{
     visibility: none;
   }

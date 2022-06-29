@@ -83,7 +83,10 @@ const editDescription = async(e) => {
                         </div>
                         {!editContent &&
                         <div className='description-and-button'>
-                            <span>{myImage?.content}</span>
+                            {myImage.content &&
+                            <span>{myImage.content}</span>}
+                            {!myImage.content &&
+                            <p>Add a description</p>}
                             <button
                             className='comment-hidden-bttn'
                             onClick={()=>setEditContent(true)}
