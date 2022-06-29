@@ -20,7 +20,8 @@ module.exports = {
         allowNull: false,
         references: {
           model: 'Images'
-        }
+        },
+        onDelete: 'CASCADE'
       },
       body: {
         type: Sequelize.TEXT,
