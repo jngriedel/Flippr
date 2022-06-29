@@ -94,7 +94,7 @@ const editDescription = async(e) => {
 
 
             {editContent &&
-            <>
+            <div className='edit-description-box'>
                   <form
                       onSubmit={editDescription}
                     //   onBlur={() => {
@@ -110,14 +110,17 @@ const editDescription = async(e) => {
                           value={description}
                       >{description}
                       </textarea>
-                      <button className='bttn' type='submit'>Done</button>
+                      <div className='edit-description-bttn-box'>
+                         <button id='edit-description-bttn' className='bttn' type='submit'>Done</button>
+                      </div>
+
                   </form>
 
 
-                </>
+                </div>
                 }
 
-                    <CommentsContainer imageId={imageId}/>
+                <CommentsContainer imageId={imageId}/>
 
         </div>
     </div>
