@@ -47,7 +47,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     padding: 10px 70px;
-    padding-bottom: ;
+
     background-color: rgba(243,245,246,255) ;
 
 }
@@ -64,6 +64,7 @@ body {
     display: flex;
     flex-direction: row;
     position: relative;
+    z-index: -1;
 }
 #cameraroll-username{
     font-size: 36px;
@@ -84,4 +85,11 @@ body {
     font-weight: 400;
     border-bottom: solid 1px #e1e1e1; ;
 
+}
+
+#cameraroll-photocount {
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
 }
