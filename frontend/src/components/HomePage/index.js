@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {getAllImages} from '../../store/images';
 import {clearComments} from '../../store/comments'
+import './Homepage.css'
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -30,16 +31,18 @@ function HomePage() {
 
 
   return (
-    <div className='cameraroll-main'>
-        <div className='banner-cameraroll'></div>
+    <div className='homepage-main'>
+        <h1 id='homepage-message'>Explore the Magic of the Ocean!</h1>
         <div className='all-cameraroll-images'>
 
             {
             allImages &&
             allImages.map((image)=> (
 
-                <div key={image.id} className='image-cameraroll-container'>
-                    <img alt={image.content} onClick={()=>redirect(image.id)} className='image-cameraroll' src={image.imageUrl}/>
+                <div key={image.id} className='image-homepage-container'>
+                    <div className='image-homepage-user'>{image.User?.username}</div>
+                    <img alt={image.content} onClick={()=>redirect(image.id)} className='image-homepage' src={image.imageUrl}/>
+                    <div className='image-homepage-description'>{image.content}</div>
                 </div>
             ))
             }

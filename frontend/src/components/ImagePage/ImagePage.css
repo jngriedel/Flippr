@@ -17,7 +17,7 @@
 }
 
 .single-image-details {
-    /* height: 45vh; add space to allow for comments */
+    height: 100%;
 }
 
 #img-delete{
