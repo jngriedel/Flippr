@@ -11,6 +11,7 @@ import ImagePage from "./components/ImagePage";
 import HomePage from "./components/HomePage";
 import Footer from "./components/Footer";
 import Splash from "./components/HomePage/Splash";
+import Component404 from "./components/Component404";
 
 function App() {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ function App() {
             <Splash/>
           </Route>
           <Route >
-            <h1> 404 Not Found. Go Fish! </h1>
+            <Component404/>
           </Route>
         </Switch>
       )}
