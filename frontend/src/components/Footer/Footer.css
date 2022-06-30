@@ -3,7 +3,9 @@
 #root {
     position: relative;
   min-height: 100vh;
-  
+  display: flex;
+  flex-direction: column;
+
 }
 
 .footer{
@@ -15,8 +17,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    position:absolute;
-    bottom: 0;
+    /* position:absolute;
+    bottom: 0; */
     width: 100%;
 }
 

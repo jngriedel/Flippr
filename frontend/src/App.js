@@ -39,11 +39,14 @@ function App() {
           <Route path="/cameraroll">
             <CameraRoll />
           </Route>
-          <Route path="/images/:imageId" >
+          <Route exact path="/images/:imageId" >
             <ImagePage />
           </Route>
           <Route path='/splash'>
             <Splash/>
+          </Route>
+          <Route >
+            <h1> 404 Not Found. Go Fish! </h1>
           </Route>
         </Switch>
       )}
