@@ -55,7 +55,7 @@ function CameraRoll() {
             </div>
             </div>}
         {
-        userImages &&
+        userImages.length > 0 &&
         <div className='all-cameraroll-images'>
 
 
