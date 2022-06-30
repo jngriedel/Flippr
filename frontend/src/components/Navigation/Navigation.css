@@ -113,6 +113,7 @@ fa-camera {
   font-size: 16px;
 }
 
+
 #cloud-bttn {
     width: 50x;
   height: 30px;
@@ -120,7 +121,11 @@ fa-camera {
   margin-left: 30px;
 
 }
+#cloud-bttn:hover {
+    filter: brightness(90%);
+    cursor: pointer;
 
+}
 #house-bttn{
   width: 50x;
   height: 30px;
