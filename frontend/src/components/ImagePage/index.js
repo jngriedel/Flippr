@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {  useHistory, useParams } from 'react-router-dom';
-import {getSingleImage, removeImage, editImage, getAllImages} from '../../store/images';
+import { removeImage, editImage, getAllImages} from '../../store/images';
 import './ImagePage.css';
 import CommentsContainer from '../CommentsContainer';
 
