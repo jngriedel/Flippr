@@ -43,11 +43,11 @@ body {
 .all-cameraroll-images{
     display: flex;
     width: auto;
-    height: 70vh;
+    /* height: 70vh; */
     flex-direction: row;
     flex-wrap: wrap;
     padding: 10px 70px;
-    row-gap: 30px;
+    row-gap:0px;
     background-color: rgba(243,245,246,255) ;
 
 }

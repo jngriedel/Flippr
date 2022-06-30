@@ -33,7 +33,7 @@ function HomePage() {
   return (
     <div className='homepage-main'>
         <h1 id='homepage-message'>Explore the Magic of the Ocean!</h1>
-        <div className='all-cameraroll-images'>
+        <div className='all-homepage-images'>
 
             {
             allImages &&
