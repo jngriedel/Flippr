@@ -47,10 +47,12 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     padding: 10px 70px;
-
+    row-gap: 30px;
     background-color: rgba(243,245,246,255) ;
 
 }
+
+
 .all-cameraroll-images2{
     display: flex;
     width: auto;
