@@ -36,6 +36,12 @@ const validateImage = [
     .withMessage('Max length for Description is 150 characters.'),
   handleValidationErrors
 ];
+const validateDescription = [
+  check('content')
+    .isLength({min:0, max:150})
+    .withMessage('Max length for Description is 150 characters.'),
+  handleValidationErrors
+];
 
 //get comments
 
@@ -94,6 +100,7 @@ router.post(
 router.put(
     '/:imageId',
     requireAuth,
+    validateDescription,
     asyncHandler(async (req, res) => {
       const { content  } = req.body;
       const {imageId} = req.params
