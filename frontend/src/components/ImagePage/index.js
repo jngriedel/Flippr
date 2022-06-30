@@ -21,11 +21,15 @@ function ImagePage() {
   const [description, setDescription] = useState(myImage?.content);
 
 
-  
+
 
 
   useEffect(()=> {
     dispatch(getAllImages())
+
+    if (!myImage){
+        history.push('/404')
+    }
 
   },[dispatch,imageId])
 
