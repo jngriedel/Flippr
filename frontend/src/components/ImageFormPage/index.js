@@ -57,7 +57,7 @@ function ImageFormPage() {
         />
 
       <label htmlFor='content'>
-        Describe Your Image
+        Short Description (Optional)
         </label>
         <input
           type="text"

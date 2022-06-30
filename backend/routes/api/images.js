@@ -31,7 +31,9 @@ const validateImage = [
       }
    })
    .withMessage('Please provide a valid image url. Image urls must end with .jpg, .jpeg, .png, or .webp. '),
-
+  check('content')
+    .isLength({min:0, max:150})
+    .withMessage('Max length for Description is 150 characters.'),
   handleValidationErrors
 ];
 
