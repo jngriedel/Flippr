@@ -5,6 +5,7 @@ const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { Image, Comment } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+import { singlePublicFileUpload, singleMulterUpload } from '../../awsS3';
 
 const router = express.Router();
 
@@ -89,9 +90,11 @@ router.get('/:imageId/comments',
 router.post(
     '/upload',
     validateImage,
+    singleMulterUpload("image"),
     asyncHandler(async (req, res) => {
+      const awsUrl= await singlePublicFileUpload(req.file);
       const { imageUrl, content, userId  } = req.body;
-      const newImage = await Image.create({ imageUrl, content, userId });
+      const newImage = await Image.create({ imageUrl: awsUrl, content, userId });
 
       res.json(newImage)
     }),
