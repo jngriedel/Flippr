@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editComment, removeComment,} from '../../store/comments';
-import CommentError from '../CommentErrorModal/index';
+// import CommentError from '../CommentErrorModal/index';
 import GenericError from '../GenericErrorModal';
 
 

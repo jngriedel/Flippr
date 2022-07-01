@@ -12,7 +12,7 @@ function ImagePage() {
   const sessionUser = useSelector(state => state.session.user);
   const {imageId} = useParams()
   const myImage = useSelector(state => state.images[imageId])
-  const areComments = useSelector(state => state.comments)
+  // const areComments = useSelector(state => state.comments)
 
   const history = useHistory()
 
