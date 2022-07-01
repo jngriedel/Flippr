@@ -1,20 +1,32 @@
-import React, {  useEffect } from 'react';
+import React, {  useEffect, useState } from 'react';
 // import * as imagesActions from '../../store/images';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import {getImages, } from '../../store/images';
+import {clearComments} from '../../store/comments'
 import './CameraRoll.css';
+
 
 function CameraRoll() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory()
-
+  const [renderPage, setRenderPage] = useState(false)
 
 
   useEffect(()=> {
-    dispatch(getImages(sessionUser.id))
+
+    const camerarollstartup = async()=> {
+      await dispatch(getImages(sessionUser.id))
+      dispatch(clearComments())
+      setRenderPage(true)
+    }
+
+    camerarollstartup()
+
+
   },[dispatch, sessionUser.id])
+
 
 
   const redirect = (imageId) => {
@@ -29,6 +41,7 @@ function CameraRoll() {
 
 
   return (
+    renderPage &&
     <div className='cameraroll-main'>
         <div className='banner-cameraroll'>
             <div className='banner-info'>
@@ -72,6 +85,8 @@ function CameraRoll() {
 
 
     </div>
+
+
   );
 
 }

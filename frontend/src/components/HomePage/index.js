@@ -1,4 +1,4 @@
-import React, {  useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {getAllImages} from '../../store/images';
@@ -9,12 +9,18 @@ function HomePage() {
   const dispatch = useDispatch();
 //   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory()
-
+  const [renderPage, setRenderPage] = useState(false)
 
   useEffect(()=> {
 
-    dispatch(getAllImages())
-    dispatch(clearComments())
+    const homepagestartup = async()=> {
+
+      await dispatch(getAllImages())
+      dispatch(clearComments())
+      setRenderPage(true)
+    }
+
+    homepagestartup()
 
   },[dispatch])
 
@@ -31,6 +37,7 @@ function HomePage() {
 
 
   return (
+    renderPage &&
     <div className='homepage-main'>
         <h1 id='homepage-message'>Explore the Magic of the Ocean!</h1>
         <div className='all-homepage-images'>
