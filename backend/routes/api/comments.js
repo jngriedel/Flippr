@@ -14,7 +14,9 @@ const router = express.Router();
 const validateComment = [
   check('body')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a comment'),
+    .withMessage('Please provide a comment')
+    .isLength({max:220})
+    .withMessage('Max length for comment is 220 characters'),
   handleValidationErrors
 ];
 

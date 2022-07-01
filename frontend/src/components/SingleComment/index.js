@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editComment, removeComment,} from '../../store/comments';
 import CommentError from '../CommentErrorModal/index';
+import GenericError from '../GenericErrorModal';
 
 
 
@@ -12,6 +13,8 @@ function SingleComment ({comment}) {
     const [editContent, setEditContent] = useState(false);
     const [currentComment, setCurrentComment] = useState(comment.body)
     const [showModal, setShowModal] = useState(false);
+    const [errors, setErrors] = useState([]);
+
 
     const onDelete = (commentId) => {
 
@@ -26,17 +29,18 @@ function SingleComment ({comment}) {
 
     const changeComment = (e)=> {
         e.preventDefault()
-
+        setErrors([]);
        dispatch(editComment(comment.id, currentComment))
        .catch(async (res) => {
         const data = await res.json();
 
         if (data && data.errors){
-        setCurrentComment(comment.body)
+
+        setErrors(data.errors)
         if (!showModal) setShowModal((oldstate)=>{
             return true});}
       });
-
+      setCurrentComment(comment.body)
       setEditContent(false)
 
 
@@ -44,7 +48,7 @@ function SingleComment ({comment}) {
 
     return (
         <>
-          {showModal && <CommentError showModal={showModal} setShowModal={setShowModal} />}
+          <GenericError showModal={showModal} setShowModal={setShowModal} errors={errors}/>
 
                 <div key={comment.id} className='single-comment-container'>
                     <div className='comment-and-user'>
