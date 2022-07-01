@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {getComments,  uploadComment} from '../../store/comments';
 import './CommentsContainer.css'
 import SingleComment from '../SingleComment';
-import CommentError from '../CommentErrorModal/index';
+import GenericError from '../GenericErrorModal';
 
 
 
@@ -18,11 +18,13 @@ function CommentsContainer ({imageId}) {
     const sessionUser = useSelector(state => state.session.user);
     const commentsObj = useSelector(state => state.comments)
     const comments = Object.values(commentsObj)
+    const [errors, setErrors] = useState([]);
 
     const dispatch = useDispatch()
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setErrors([]);
         const payload = {
             body,
             imageId,
@@ -34,7 +36,7 @@ function CommentsContainer ({imageId}) {
             const data = await res.json();
 
             if (data && data.errors){
-
+            setErrors(data.errors)
             if (!showModal) setShowModal((oldstate)=>{
                 return true});}
           });
@@ -60,7 +62,7 @@ function CommentsContainer ({imageId}) {
     return (
 
     <div className='comments-container'>
-        {showModal && <CommentError showModal={showModal} setShowModal={setShowModal} />}
+       <GenericError showModal={showModal} setShowModal={setShowModal} errors={errors}/>
         <div className='comments'>
             {
             comments &&

@@ -33,7 +33,7 @@ function HomePage() {
   return (
     <div className='homepage-main'>
         <h1 id='homepage-message'>Explore the Magic of the Ocean!</h1>
-        <div className='all-cameraroll-images'>
+        <div className='all-homepage-images'>
 
             {
             allImages &&
@@ -42,7 +42,7 @@ function HomePage() {
                 <div key={image.id} className='image-homepage-container'>
                     <div className='image-homepage-user'>{image.User?.username}</div>
                     <img alt={image.content} onClick={()=>redirect(image.id)} className='image-homepage' src={image.imageUrl}/>
-                    <div className='image-homepage-description'>{image.content}</div>
+                    {/* <div className='image-homepage-description'>{image.content}</div> */}
                 </div>
             ))
             }

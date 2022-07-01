@@ -1,9 +1,10 @@
 import React, { useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {  useHistory, useParams } from 'react-router-dom';
-import {getSingleImage, removeImage, editImage, getAllImages} from '../../store/images';
+import { removeImage, editImage, getAllImages} from '../../store/images';
 import './ImagePage.css';
 import CommentsContainer from '../CommentsContainer';
+import GenericError from '../GenericErrorModal';
 
 
 function ImagePage() {
@@ -11,7 +12,7 @@ function ImagePage() {
   const sessionUser = useSelector(state => state.session.user);
   const {imageId} = useParams()
   const myImage = useSelector(state => state.images[imageId])
-
+  const areComments = useSelector(state => state.comments)
 
   const history = useHistory()
 
@@ -19,8 +20,8 @@ function ImagePage() {
 
   const [editContent, setEditContent] = useState(false);
   const [description, setDescription] = useState(myImage?.content);
-
-
+  const [showDesModal, setShowDesModal] = useState(false);
+  const [errors, setErrors] = useState([]);
 
 
 
@@ -50,10 +51,26 @@ function ImagePage() {
 
 const editDescription = async(e) => {
     e.preventDefault()
-    const response = await dispatch(editImage(imageId, description))
-    if (response) {
-    setEditContent(false)
-    }
+    setErrors([]);
+    await dispatch(editImage(imageId, description))
+    .catch(async (res) => {
+        const data = await res.json();
+
+        if (data && data.errors){
+            setErrors(data.errors)
+        if (!showDesModal) setShowDesModal((oldstate)=>{
+            return true});
+
+            return
+        }
+
+      });
+
+      setDescription(myImage.content)
+      setEditContent(false)
+
+
+
 }
 
 
@@ -64,6 +81,7 @@ const editDescription = async(e) => {
   return (
 
     <div id='image-page'>
+        <GenericError showModal={showDesModal} setShowModal={setShowDesModal} errors={errors}/>
       <div className='view-single-image'>
 
         {

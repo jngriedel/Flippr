@@ -31,7 +31,15 @@ const validateImage = [
       }
    })
    .withMessage('Please provide a valid image url. Image urls must end with .jpg, .jpeg, .png, or .webp. '),
-
+  check('content')
+    .isLength({min:0, max:150})
+    .withMessage('Max length for Description is 150 characters.'),
+  handleValidationErrors
+];
+const validateDescription = [
+  check('content')
+    .isLength({min:0, max:150})
+    .withMessage('Max length for Description is 150 characters.'),
   handleValidationErrors
 ];
 
@@ -92,6 +100,7 @@ router.post(
 router.put(
     '/:imageId',
     requireAuth,
+    validateDescription,
     asyncHandler(async (req, res) => {
       const { content  } = req.body;
       const {imageId} = req.params
