@@ -20,9 +20,12 @@
     height: 100%;
     width: 100%;
     box-sizing: border-box;
+    border-bottom-left-radius: .25em;
+    border-bottom-right-radius: .25em;
 }
 .image-homepage:hover {
     cursor: pointer;
+
 }
 
 
@@ -32,12 +35,14 @@
     padding: 0px 12px;
     height: 40px;
     width: 100%;
-    border-radius: .25em;
+    border-top-right-radius: .25em;
+    border-top-left-radius: .25em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     font-size: 14px;
     font-weight: bold;
+    border: solid 1px #e1e1e1; ;
 }
 
 .image-homepage-description {
@@ -65,12 +70,16 @@ padding-top: 10px;
 
 .all-homepage-images {
         display: flex;
-        width: 100%;
+        width: auto;
         /* height: 100vh; */
         flex-direction: row;
         flex-wrap: wrap;
         padding: 10px 70px;
-        row-gap: 30px;
+        row-gap: 100px;
         column-gap: 10px;
         background-color: rgba(243,245,246,255) ;
+
+
+
+
 }

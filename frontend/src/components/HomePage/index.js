@@ -42,7 +42,7 @@ function HomePage() {
                 <div key={image.id} className='image-homepage-container'>
                     <div className='image-homepage-user'>{image.User?.username}</div>
                     <img alt={image.content} onClick={()=>redirect(image.id)} className='image-homepage' src={image.imageUrl}/>
-                    <div className='image-homepage-description'>{image.content}</div>
+                    {/* <div className='image-homepage-description'>{image.content}</div> */}
                 </div>
             ))
             }
