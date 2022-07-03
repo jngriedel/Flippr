@@ -52,7 +52,7 @@
 
 #### I had some troubles where previous states of images would render for a half-second on new pages, such as all database images rendering on a user's page, or the user's images rendering instead of all images on the Home Page. This was due to previous states loading before the page ran its dispatch functions. 
 
-#### To fix this, I implented a whole page conditional render variable, and created a nested asynchronous function inside the main render UseEffect, preventing any flashes of unwanted content.
+#### To fix this, I implented a whole page conditional render variable, and created a nested asynchronous function inside the main render UseEffect, preventing any flashes of unwanted content. The same could be accomplished with a .then.
 
 ```
 function HomePage () {
