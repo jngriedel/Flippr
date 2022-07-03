@@ -28,6 +28,17 @@
     font-weight: bold;
 }
 
-#file-upload-input {
-    border: none;
+#file-upload-input  {
+	border: none;
+    display: none;
+
+}
+
+#file-upload-input + label {
+    background-color: red;
+}
+
+#file-wrapper{
+background-color: blue;
+cursor: pointer;
 }

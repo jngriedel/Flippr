@@ -64,9 +64,11 @@ function ImageFormPage() {
         <GenericError setShowModal={setShowModal} showModal={showModal} errors={errors} />
         <div className='login-form-box'>
     <form className='signup-login' onSubmit={handleSubmit}>
-      <label htmlFor='uploadImg'>
+      <div >
         Upload Your Images
-        </label>
+        </div>
+        <label htmlFor='uploadImg' id='file-wrapper'>
+          +
         <input
           type="file"
           name='uploadImg'
@@ -76,7 +78,7 @@ function ImageFormPage() {
           onChange={updateFiles}
           required
         />
-
+        </label>
 
 
       <button className='bttn' type="submit">Upload</button>
