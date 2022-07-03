@@ -10,3 +10,24 @@
     justify-content: center;
     align-items: center;
 }
+
+
+#file-upload-button {
+    background-color:  #128fdc ;
+    color: #fff;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 200px;   /*will fill up div when created */
+    cursor: pointer;
+    border-style: none;
+    border-radius: 0.20rem;
+    transition: background-color .2s;
+
+    font-weight: bold;
+}
+
+#file-upload-input {
+    border: none;
+}

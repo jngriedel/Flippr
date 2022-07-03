@@ -70,22 +70,14 @@ function ImageFormPage() {
         <input
           type="file"
           name='uploadImg'
+          accept="image/*"
           multiple
-
+          id='file-upload-input'
           onChange={updateFiles}
           required
         />
 
-      <label htmlFor='content'>
-        Short Description (Optional)
-        </label>
-        <input
-          type="text"
-          name='content'
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
 
-        />
 
       <button className='bttn' type="submit">Upload</button>
     </form>
