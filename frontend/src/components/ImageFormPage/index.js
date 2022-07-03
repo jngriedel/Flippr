@@ -9,11 +9,12 @@ import GenericError from '../GenericErrorModal';
 function ImageFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const [imageUrl, setImageUrl] = useState('');
+
   const [content, setContent] = useState('');
   const [errors, setErrors] = useState([]);
   const [showModal, setShowModal] = useState(false)
-  const [image, setImage] = useState(null);
+  // const [image, setImage] = useState(null);
+    const [images, setImages] = useState([]);
   const history = useHistory()
 
   if (!sessionUser) { return (
@@ -26,8 +27,8 @@ function ImageFormPage() {
     e.preventDefault();
     setErrors([]);
     const payload = {
-        image,
-        content,
+        images,
+
         userId : sessionUser.id
     }
     dispatch(uploadImage(payload))
@@ -42,13 +43,17 @@ function ImageFormPage() {
 
   }
 
-  const updateFile = (e) => {
-    const file = e.target.files[0];
-    if (file) setImage(file);
-  };
+  // const updateFile = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) setImage(file);
+  // };
 
 
-
+// for multiple file upload
+    const updateFiles = (e) => {
+      const files = e.target.files;
+      setImages(files);
+    };
 
 
 
@@ -60,13 +65,14 @@ function ImageFormPage() {
         <div className='login-form-box'>
     <form className='signup-login' onSubmit={handleSubmit}>
       <label htmlFor='uploadImg'>
-        Upload Your Image
+        Upload Your Images
         </label>
         <input
           type="file"
           name='uploadImg'
+          multiple
 
-          onChange={updateFile}
+          onChange={updateFiles}
           required
         />
 

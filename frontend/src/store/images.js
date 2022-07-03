@@ -68,17 +68,17 @@ export const getSingleImage = (imageId) => async dispatch => {
 }
 
 export const uploadImage = (input) => async dispatch => {
-    const {image, content, userId} = input;
+    const {image, images, content, userId} = input;
 
     const formData = new FormData();
     formData.append("userId", userId);
     formData.append("content", content);
 
-    // if (images && images.length !== 0) {
-    //     for (var i = 0; i < images.length; i++) {
-    //       formData.append("images", images[i]);
-    //     }
-    //   }
+    if (images && images.length !== 0) {
+        for (var i = 0; i < images.length; i++) {
+          formData.append("images", images[i]);
+        }
+      }
 
     if (image) formData.append("image", image);
 
@@ -90,7 +90,7 @@ export const uploadImage = (input) => async dispatch => {
     },
     body: formData,
     });
-    
+
     if (response.ok){
     const data = await response.json();
     dispatch(addImage(data))
@@ -134,7 +134,10 @@ const imageReducer = (state = initialState, action) => {
     switch (action.type) {
       case ADD_IMAGE: {
         const newState = {...state};
-        newState[action.payload.id] = action.payload;
+        action.payload.forEach((image)=>{
+            newState[image.id] = image;
+        })
+
         return newState;
       }
       case DELETE_IMAGE: {
