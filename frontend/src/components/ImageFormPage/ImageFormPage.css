@@ -30,15 +30,10 @@
 
 #file-upload-input  {
 	border: none;
-    display: none;
 
 }
 
-#file-upload-input + label {
-    background-color: red;
-}
 
-#file-wrapper{
-background-color: blue;
-cursor: pointer;
+input[type=file]::file-upload-button {
+    background-color: white;
 }

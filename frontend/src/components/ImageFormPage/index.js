@@ -67,8 +67,7 @@ function ImageFormPage() {
       <div >
         Upload Your Images
         </div>
-        <label htmlFor='uploadImg' id='file-wrapper'>
-          +
+
         <input
           type="file"
           name='uploadImg'
@@ -78,7 +77,7 @@ function ImageFormPage() {
           onChange={updateFiles}
           required
         />
-        </label>
+        
 
 
       <button className='bttn' type="submit">Upload</button>
