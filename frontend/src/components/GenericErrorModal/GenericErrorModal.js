@@ -1,4 +1,4 @@
-
+import '../CommentErrorModal/CommentErrorModal.css'
 function GenericErrorModal ({setShowModal, errors}) {
 
 
