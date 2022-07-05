@@ -31,6 +31,7 @@
 * Javascript
 * Node JS
 * REACT
+* Express
 * REDUX
 * Postgres
 * SEQEULIZE
