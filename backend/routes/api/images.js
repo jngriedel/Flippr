@@ -12,31 +12,31 @@ const router = express.Router();
 
 ///Validator
 
-const validateImage = [
-  check('imageUrl')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide an image URL.')
-    .isLength({max:255})
-    .withMessage('Max length for url link is 255 characters.')
-    .custom(val => {
-      const checker1 = val.slice(val.length-4, val.length)
-      const checker2 = val.slice(val.length-5, val.length)
+// const validateImage = [
+//   check('imageUrl')
+//     .exists({ checkFalsy: true })
+//     .withMessage('Please provide an image URL.')
+//     .isLength({max:255})
+//     .withMessage('Max length for url link is 255 characters.')
+//     .custom(val => {
+//       const checker1 = val.slice(val.length-4, val.length)
+//       const checker2 = val.slice(val.length-5, val.length)
 
-      if(checker1 === '.jpg') return true
-      if(checker1 === '.png') return true
-      if(checker2 === '.webp') return true
-      if(checker2 === '.jpeg') return true
+//       if(checker1 === '.jpg') return true
+//       if(checker1 === '.png') return true
+//       if(checker2 === '.webp') return true
+//       if(checker2 === '.jpeg') return true
 
-      else {
-      return false
-      }
-   })
-   .withMessage('Please provide a valid image url. Image urls must end with .jpg, .jpeg, .png, or .webp. '),
-  check('content')
-    .isLength({min:0, max:150})
-    .withMessage('Max length for Description is 150 characters.'),
-  handleValidationErrors
-];
+//       else {
+//       return false
+//       }
+//    })
+//    .withMessage('Please provide a valid image url. Image urls must end with .jpg, .jpeg, .png, or .webp. '),
+//   check('content')
+//     .isLength({min:0, max:150})
+//     .withMessage('Max length for Description is 150 characters.'),
+//   handleValidationErrors
+// ];
 const validateDescription = [
   check('content')
     .isLength({min:0, max:150})
@@ -95,7 +95,7 @@ router.post(
       const {  userId  } = req.body;
 
       const imageUrls = await multiplePublicFileUpload(req.files)
-      
+
       const newImages = []
       imageUrls.forEach(async(imageUrl)=> {
         const newImage = await Image.create({ imageUrl, userId });

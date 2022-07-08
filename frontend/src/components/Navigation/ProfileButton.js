@@ -20,8 +20,8 @@ function ProfileButton({ user }) {
     const closeMenu = () => {
       setShowMenu(false);
     };
-
     document.addEventListener('click', closeMenu);
+
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
@@ -36,9 +36,9 @@ function ProfileButton({ user }) {
     <>
       <button className="dropdown-bttn" onClick={openMenu}>
       </button>
-      <div className="dropdown-menu">
       {showMenu && (
-        <>
+
+      <div className="dropdown-menu" id="dropdown-main">
         <div className="greeting-box">
           <div className="intro-message">
           <h4>{'Hello,'}</h4><div>&nbsp;</div><NavLink id='profile-link' to="/cameraroll"> {user.username}</NavLink>
@@ -54,9 +54,9 @@ function ProfileButton({ user }) {
           <button id="dropdown-logout" onClick={logout}>Log Out</button>
           </div>
 
-        </>
-      )}
       </div>
+
+      )}
     </>
   );
 }
