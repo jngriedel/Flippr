@@ -104,7 +104,7 @@ const editDescription = async(e) => {
                             <h3 >{myImage.User?.username}</h3>
                         </div>
                         {!editContent &&
-                        <div className='description-and-button'>
+                        <div className={myImage.userId === sessionUser?.id ? 'description-and-button' : 'description-and-button-nouser'}>
                             {myImage.content &&
                             <span>{myImage.content}</span>}
                             {!myImage.content &&
