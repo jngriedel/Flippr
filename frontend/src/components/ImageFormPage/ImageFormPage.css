@@ -34,6 +34,20 @@
 }
 
 
-input[type=file]::file-upload-button {
-    background-color: white;
+
+
+input[type=file]::file-selector-button {
+    background-color:  #128fdc ;
+    color: #fff;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 150px;   /*will fill up div when created */
+    cursor: pointer;
+    border-style: none;
+    border-radius: 0.20rem;
+    transition: background-color .2s;
+
+    font-weight: bold;
 }
