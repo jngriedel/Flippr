@@ -50,7 +50,7 @@ function SingleComment ({comment}) {
         <>
           <GenericError showModal={showModal} setShowModal={setShowModal} errors={errors}/>
 
-                <div key={comment.id} className='single-comment-container'>
+                <div key={comment.id} className={sessionUser?.id === comment.userId ? 'single-comment-container' : 'single-comment-container-nouser'}>
                     <div className='comment-and-user'>
                         <h4 id='comment-user'>{comment.User?.username}</h4>
                         {!editContent &&
