@@ -4,7 +4,7 @@
     width: 140px;
     margin: 5px;
     box-sizing: border-box;
-    transition: .2s;
+    transition: .1s;
 
 
 
@@ -12,6 +12,7 @@
 .image-cameraroll-container:hover {
     outline: 3px solid #62beec;
     filter: brightness(90%);
+    
 
 }
 
