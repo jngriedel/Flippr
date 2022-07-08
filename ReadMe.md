@@ -20,10 +20,6 @@
 
 ![image](https://user-images.githubusercontent.com/19957902/176944910-0fa5d6c0-acdc-4abf-a537-60e1f54409ea.png)
 
-# Upload Image Page
-
-### To upload an image, a user must simply click the upload cloud in the navbar, and then enter the url ending in .png,.jpeg, .jpg, or .webp, along with an optional description. 
-![image](https://user-images.githubusercontent.com/19957902/176946471-8707af77-b1d2-4ee1-9efd-be85d2d8f9a8.png)
 
 # List of Languages and Plugins
 * CSS
@@ -42,7 +38,6 @@
 * Create, Read, Update, and Destroy Comments with Error Handling
 
 ### To-Do:
-* [ ] AWS Image Storing
 * [ ] Albums
 * [ ] Favorites
 * [ ] Tags
