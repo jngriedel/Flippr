@@ -24,11 +24,15 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: rgba(243,245,246,255) ;
+  z-index: 0;  /*fill empty space */
 
 }
 
 #content-wrap {
     padding-bottom: 50px;
+    height: 100%;
+
 }
 
 

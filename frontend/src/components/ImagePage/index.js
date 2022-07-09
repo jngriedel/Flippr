@@ -27,10 +27,13 @@ function ImagePage() {
 
   useEffect(()=> {
     dispatch(getAllImages())
+    .then(()=>{
+      if (!myImage){
+              history.push('/404')
+          }
+    })
 
-    // if (!myImage){
-    //     history.push('/404')
-    // }
+
 
   },[dispatch,imageId])
 
@@ -98,7 +101,7 @@ const editDescription = async(e) => {
         }
     </div>
         <div className='single-image-details'>
-            {myImage &&
+            {myImage && 
                     <div className='image-detail-box'>
                         <div className='username-box'>
                             <h3 >{myImage.User?.username}</h3>
