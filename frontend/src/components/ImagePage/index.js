@@ -27,10 +27,13 @@ function ImagePage() {
 
   useEffect(()=> {
     dispatch(getAllImages())
+    .then(()=>{
+      if (!myImage){
+              history.push('/404')
+          }
+    })
 
-    // if (!myImage){
-    //     history.push('/404')
-    // }
+
 
   },[dispatch,imageId])
 
