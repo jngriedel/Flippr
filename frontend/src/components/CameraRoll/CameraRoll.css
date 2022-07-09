@@ -27,8 +27,13 @@
     width: auto;
     /* height: 70vh; */
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
-    padding: 10px 70px;
+    padding-top: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 40px;
     row-gap:0px;
     background-color: rgba(243,245,246,255) ;
     height: 100%;
