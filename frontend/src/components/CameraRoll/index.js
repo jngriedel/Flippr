@@ -64,7 +64,7 @@ function CameraRoll() {
             <div className='empty-cameraroll'>
             <h3 id='emptyMessage'>Looks empty in here. </h3>
             <h4 id='emptyMessage2'>Start by uploading your photos!</h4>
-            <button className='bttn'><NavLink id='to-upload-bttn' to='/images/upload'>Upload Photos</NavLink></button>
+            <NavLink id='to-upload-bttn' to='/images/upload'><button className='bttn'>Upload Photos</button></NavLink>
             </div>
             </div>}
         {
