@@ -121,7 +121,7 @@ const editDescription = async(e) => {
                             <div className='title-and-description'>
                             {myImage.title ?
                             <h4 id='image-title-span'>{myImage.title}</h4>
-                            : <h4>Add Title</h4>}
+                            : <h4 id='no-title'>Add Title</h4>}
 
 
                             {myImage.content?
