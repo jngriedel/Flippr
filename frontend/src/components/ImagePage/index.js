@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {  useHistory, useParams } from 'react-router-dom';
 import { removeImage, editImage, getAllImages} from '../../store/images';
+import { newFavorite, removeFavorite, getFavorites } from '../../store/favorites';
 import './ImagePage.css';
 import CommentsContainer from '../CommentsContainer';
 import GenericError from '../GenericErrorModal';
@@ -12,6 +13,12 @@ function ImagePage() {
   const sessionUser = useSelector(state => state.session.user);
   const {imageId} = useParams()
   const myImage = useSelector(state => state.images[imageId])
+  const allUserFavorites = useSelector(state => state.favorites)
+  const allUserFavoritesValues = Object.values(allUserFavorites)
+  const isFavorited = allUserFavoritesValues.find((ele)=>{
+    return ele.imageId === +imageId
+  })
+
   // const areComments = useSelector(state => state.comments)
 
   const history = useHistory()
@@ -28,6 +35,7 @@ function ImagePage() {
 
   useEffect(()=> {
     dispatch(getAllImages())
+    dispatch(getFavorites(sessionUser.id))
     // .then(()=>{
     //   if (!myImage){
     //           history.push('/404')
@@ -77,9 +85,21 @@ const editDescription = async(e) => {
         }
         setTitle(myImage.title)
       });
+}
 
+const favoriteThisImage = async(imageId) => {
 
+  if (!sessionUser) {
+    history.push('/login')
+  }
 
+  else if(!isFavorited) {
+    await dispatch(newFavorite({userId: sessionUser.id, imageId}))
+
+  }
+  else{
+    await dispatch(removeFavorite(isFavorited.id))
+  }
 
 
 }
@@ -99,10 +119,20 @@ const editDescription = async(e) => {
             < >
                 <img alt ={myImage?.content} className='image-alone' src={myImage?.imageUrl}/>
                 {myImage &&
+                <div id='img-buttons'>
+
                     <div className='delete-holder'>
+
+                      <button id='img-delete' onClick={()=>favoriteThisImage(myImage.id)}
+                      >{isFavorited ? <i className="fa fa-star fa-2x" aria-hidden="true"></i> : <i className="fa fa-star-o fa-2x" aria-hidden="true"></i>}</button>
+
+                    </div>
+                    <div className='delete-holder'>
+
                       <button id='img-delete' onClick={()=>deleteImage(myImage.id)}
                       style={{visibility: myImage.userId === sessionUser?.id ? "visible" : "hidden"}}><i className="fa fa-trash fa-2x" aria-hidden="true"></i></button>
 
+                    </div>
                     </div>}
             </>
 

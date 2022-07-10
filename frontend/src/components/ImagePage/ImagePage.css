@@ -29,6 +29,15 @@
 
 }
 
+#img-favorite{
+    background-color: transparent;
+    border: none;
+    color: white;
+    /* position: absolute;
+    right: 0; */
+
+}
+
 #image-title-span{
     color: #212124;
 
@@ -50,6 +59,10 @@
     width: 30px;
     margin-right: 20px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     position: relative;
     align-self: flex-end;
 }
@@ -65,4 +78,18 @@
     margin-right: 20px;
     border-bottom: 1px #e1e1e1 solid;
 
+}
+
+
+#img-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-self: flex-end;
+    align-self: flex-end;
+
+}
+
+.fa-star,
+.fa-star-o{
+    cursor: pointer;
 }
