@@ -20,6 +20,7 @@ function ImagePage() {
 
   const [editContent, setEditContent] = useState(false);
   const [description, setDescription] = useState(myImage?.content);
+  const [title, setTitle] = useState(myImage?.title);
   const [showDesModal, setShowDesModal] = useState(false);
   const [errors, setErrors] = useState([]);
 
@@ -27,11 +28,11 @@ function ImagePage() {
 
   useEffect(()=> {
     dispatch(getAllImages())
-    .then(()=>{
-      if (!myImage){
-              history.push('/404')
-          }
-    })
+    // .then(()=>{
+    //   if (!myImage){
+    //           history.push('/404')
+    //       }
+    // })
 
 
 
@@ -39,9 +40,14 @@ function ImagePage() {
 
  useEffect(()=> {
     if (myImage) {
+
         setDescription(myImage.content)
+        setTitle(myImage.title)
     }
  },[myImage])
+ useEffect(()=> {
+    console.log(title)
+ },[title])
 
   const deleteImage = (imageId) => {
     let result = window.confirm("This photo will be gone forever. Are you Sure?");
@@ -55,7 +61,12 @@ function ImagePage() {
 const editDescription = async(e) => {
     e.preventDefault()
     setErrors([]);
-    await dispatch(editImage(imageId, description))
+    await dispatch(editImage(imageId, description, title))
+    .then(()=>{
+      setDescription(myImage.content)
+
+      setEditContent(false)
+    })
     .catch(async (res) => {
         const data = await res.json();
 
@@ -66,11 +77,10 @@ const editDescription = async(e) => {
 
             return
         }
-
+        setTitle(myImage.title)
       });
 
-      setDescription(myImage.content)
-      setEditContent(false)
+
 
 
 
@@ -101,17 +111,24 @@ const editDescription = async(e) => {
         }
     </div>
         <div className='single-image-details'>
-            {myImage && 
+            {myImage &&
                     <div className='image-detail-box'>
                         <div className='username-box'>
                             <h3 >{myImage.User?.username}</h3>
+
                         </div>
                         {!editContent &&
                         <div className={myImage.userId === sessionUser?.id ? 'description-and-button' : 'description-and-button-nouser'}>
-                            {myImage.content &&
-                            <span>{myImage.content}</span>}
-                            {!myImage.content &&
-                            <p>Add a description</p>}
+                            {myImage.content && myImage.title &&
+                            <div className='title-and-description'>
+                            <h4 id='image-title-span'>{myImage.title}</h4>
+                            <span>{myImage.content}</span>
+                            </div>}
+                            {!myImage.content && myImage.title &&
+                            <div className='title-and-description'>
+                            <h4 id='image-title-span'>{myImage.title}</h4>
+                            <p>Add a description</p>
+                            </div>}
                             <button
                             className='comment-hidden-bttn'
                             onClick={()=>setEditContent(true)}
@@ -125,12 +142,20 @@ const editDescription = async(e) => {
             <div className='edit-description-box'>
                   <form
                       onSubmit={editDescription}
-                    //   onBlur={() => {
-                    //       setEditContent(false);
-                    //       setDescription(myImage.content)
-                    //   }}
+                      // onBlur={() => {
+                      //     setEditContent(false);
+                      //     setDescription(myImage.content)
+                      //     setTitle(myImage.title)
+                      // }}
                       >
+                      <textarea
+                        id='title-textarea'
+                        name='title'
+                        onChange={(e) => { setTitle(e.target.value) }}
+                        value={title}
 
+                      >{title}
+                      </textarea>
                       <textarea
                           className='description-textarea'
                           name='description'
