@@ -45,9 +45,7 @@ function ImagePage() {
         setTitle(myImage.title)
     }
  },[myImage])
- useEffect(()=> {
-    console.log(title)
- },[title])
+
 
   const deleteImage = (imageId) => {
     let result = window.confirm("This photo will be gone forever. Are you Sure?");
@@ -119,16 +117,17 @@ const editDescription = async(e) => {
                         </div>
                         {!editContent &&
                         <div className={myImage.userId === sessionUser?.id ? 'description-and-button' : 'description-and-button-nouser'}>
-                            {myImage.content && myImage.title &&
+
                             <div className='title-and-description'>
+                            {myImage.title ?
                             <h4 id='image-title-span'>{myImage.title}</h4>
-                            <span>{myImage.content}</span>
-                            </div>}
-                            {!myImage.content && myImage.title &&
-                            <div className='title-and-description'>
-                            <h4 id='image-title-span'>{myImage.title}</h4>
-                            <p>Add a description</p>
-                            </div>}
+                            : <h4>Add Title</h4>}
+
+
+                            {myImage.content?
+                              <span>{myImage.content}</span> :
+                            <p>Add a description</p> }
+                            </div>
                             <button
                             className='comment-hidden-bttn'
                             onClick={()=>setEditContent(true)}

@@ -35,11 +35,15 @@ textarea:focus {
     padding-bottom: 10px;
   }
 
-  .description-and-button > p {
+  .title-and-description > p {
     font-size: 14px;
     line-height: 18px;
     font-weight: 400;
     color: #898989;
+  }
+  .title-and-description > h4{
+    color: #898989;
+    font-weight: 600;
   }
 
   .description-and-button > .comment-hidden-bttn{
