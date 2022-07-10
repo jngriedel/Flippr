@@ -6,6 +6,7 @@ module.exports = {
       {
         userId: 1,
         imageUrl: 'https://www.cmaquarium.org/app/uploads/2021/06/2021.04-Nick-Underwater-0001.jpg',
+        title : 'Dolphin',
         content: 'A beautiful Dolphin',
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -13,6 +14,7 @@ module.exports = {
       {
         userId: 2,
         imageUrl: 'https://rangerrick.org/wp-content/uploads/2018/04/RR-Pufferfish-Sept-2016.jpg',
+        title : 'Pufferfish',
         content: 'A Pufferfish I saw!',
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -20,6 +22,7 @@ module.exports = {
       {
         userId: 3,
         imageUrl: 'https://i.natgeofe.com/n/38957713-91e2-4cb5-933c-e94f12f1f587/NationalGeographic_2728008_square.jpg',
+        title : 'Cuddlefish',
         content: 'Some cool Cuddlefish',
         createdAt: new Date(),
         updatedAt: new Date(),

@@ -28,6 +28,10 @@
     right: 0; */
 
 }
+
+#image-title-span{
+    margin-bottom: 10px;
+}
 .fa-trash:hover{
     cursor: pointer;
 

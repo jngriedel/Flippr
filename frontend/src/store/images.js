@@ -109,12 +109,13 @@ export const removeImage = (imageId) => async dispatch => {
     }
 }
 
-export const editImage = (imageId, content) => async dispatch => {
+export const editImage = (imageId, content, title) => async dispatch => {
 
     const response = await csrfFetch(`/api/images/${imageId}`, {
         method: 'PUT',
         body: JSON.stringify({
             content,
+            title
         })
 
     })
