@@ -43,6 +43,12 @@ const validateDescription = [
     .withMessage('Max length for Description is 150 characters.'),
   handleValidationErrors
 ];
+const validateTitle = [
+  check('title')
+    .isLength({min:0, max:30})
+    .withMessage('Max length for a Title is 30 characters'),
+  handleValidationErrors
+];
 
 //get comments
 
@@ -111,12 +117,13 @@ router.put(
     '/:imageId',
     requireAuth,
     validateDescription,
+    validateTitle,
     asyncHandler(async (req, res) => {
-      const { content  } = req.body;
+      const { content, title  } = req.body;
       const {imageId} = req.params
       const image = await Image.findByPk(+imageId, {include:'User'})
-      console.log(image)
-      const updated = await image.update({ content });
+
+      const updated = await image.update({ content, title });
 
         res.json(updated)
     }),
