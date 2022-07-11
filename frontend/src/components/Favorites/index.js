@@ -61,7 +61,7 @@ function Favorites() {
             </div>
         </div>
         <div className='cameraroll-label'>
-            Camera Roll
+            Favorites
         </div>
 
 
