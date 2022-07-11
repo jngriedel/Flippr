@@ -12,6 +12,7 @@ import HomePage from "./components/HomePage";
 import Footer from "./components/Footer";
 import Splash from "./components/HomePage/Splash";
 import Component404 from "./components/Component404";
+import Favorites from "./components/Favorites";
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route path='/splash'>
             <Splash/>
+          </Route>
+          <Route path='/:userId/favorites'>
+            <Favorites/>
           </Route>
           <Route >
             <Component404/>

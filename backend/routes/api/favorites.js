@@ -18,7 +18,7 @@ const router = express.Router();
         const {userId} = req.params
 
 
-      const userFavorites = await Favorite.findAll({where:{userId}});
+      const userFavorites = await Favorite.findAll({where:{userId}, include: ['User', 'Image']});
       res.json(userFavorites)
     }),
   );

@@ -44,7 +44,7 @@ function ImagePage() {
 
 
 
-  },[dispatch,imageId])
+  },[dispatch,imageId, sessionUser.id])
 
  useEffect(()=> {
     if (myImage) {
