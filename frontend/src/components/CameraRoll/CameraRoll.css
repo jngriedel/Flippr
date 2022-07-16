@@ -141,5 +141,13 @@
 .profile-section-link:hover{
     border-bottom: #62beec 1px solid;
     box-sizing: border-box;
-    padding: 11px 20px;
+    padding: 12px 20px;
+}
+
+.profile-section-link-selected{
+    text-decoration: none;
+    color: black;
+    border-bottom: #62beec 1px solid;
+    box-sizing: border-box;
+    padding: 12px 20px;
 }

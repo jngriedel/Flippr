@@ -61,8 +61,8 @@ function Favorites() {
             </div>
         </div>
         <div className='cameraroll-label'>
-       <NavLink to='/cameraroll' className='profile-section-link'>Camera Roll</NavLink>
-            <NavLink to={`/${sessionUser.id}/favorites`} className='profile-section-link'>Favorites</NavLink>
+            <NavLink to='/cameraroll' className='profile-section-link'>Camera Roll</NavLink>
+            <NavLink to={`/${sessionUser.id}/favorites`}  className='profile-section-link-selected'>Favorites</NavLink>
         </div>
 
 

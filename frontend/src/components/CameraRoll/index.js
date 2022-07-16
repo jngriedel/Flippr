@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import {getImages, } from '../../store/images';
 import {clearComments} from '../../store/comments'
-import './CameraRoll.css' 
+import './CameraRoll.css'
 
 
 function CameraRoll() {
@@ -55,7 +55,7 @@ function CameraRoll() {
             </div>
         </div>
         <div className='cameraroll-label'>
-            <NavLink to='/cameraroll' className='profile-section-link'>Camera Roll</NavLink>
+            <NavLink to='/cameraroll'  className='profile-section-link-selected'>Camera Roll</NavLink>
            <NavLink to={`/${sessionUser.id}/favorites`} className='profile-section-link'>Favorites</NavLink>
         </div>
 
