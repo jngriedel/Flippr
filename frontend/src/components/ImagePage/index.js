@@ -35,7 +35,8 @@ function ImagePage() {
 
   useEffect(()=> {
     dispatch(getAllImages())
-    dispatch(getFavorites(sessionUser.id))
+    if (sessionUser) dispatch(getFavorites(sessionUser.id))
+
     // .then(()=>{
     //   if (!myImage){
     //           history.push('/404')
@@ -44,7 +45,7 @@ function ImagePage() {
 
 
 
-  },[dispatch,imageId, sessionUser.id])
+  },[dispatch,imageId, sessionUser])
 
  useEffect(()=> {
     if (myImage) {
