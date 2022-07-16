@@ -5,7 +5,7 @@ import { NavLink, useHistory, useParams } from 'react-router-dom';
 // import {getImages, } from '../../store/images';
 import {clearComments} from '../../store/comments'
 import { getFavorites } from '../../store/favorites';
-import './CameraRoll.css';
+import '../CameraRoll/CameraRoll.css'
 
 
 function Favorites() {
@@ -61,7 +61,8 @@ function Favorites() {
             </div>
         </div>
         <div className='cameraroll-label'>
-            Favorites
+       <NavLink to='/cameraroll' className='profile-section-link'>Camera Roll</NavLink>
+            <NavLink to={`/${sessionUser.id}/favorites`} className='profile-section-link'>Favorites</NavLink>
         </div>
 
 
