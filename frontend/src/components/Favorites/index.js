@@ -23,7 +23,7 @@ function Favorites() {
   useEffect(()=> {
 
     const favoritesstartup = async()=> {
-
+      
       await dispatch(getFavorites(userId))
       dispatch(clearComments())
       setRenderPage(true)

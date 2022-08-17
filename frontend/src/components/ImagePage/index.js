@@ -152,12 +152,12 @@ const favoriteThisImage = async(imageId) => {
                             <div className='title-and-description'>
                             {myImage.title ?
                             <h4 id='image-title-span'>{myImage.title}</h4>
-                            : <h4 id='no-title'>Add Title</h4>}
+                            : myImage.userId === sessionUser?.id ? <h4 id='no-title'>Add Title</h4> : <h4 id='no-title'>No Title</h4> }
 
 
                             {myImage.content?
                               <span>{myImage.content}</span> :
-                            <p>Add a description</p> }
+                              myImage.userId === sessionUser?.id ?  <p>Add a description</p> : <p>No description</p>  }
                             </div>
                             <button
                             className='comment-hidden-bttn'
