@@ -69,7 +69,7 @@ export const getSingleImage = (imageId) => async dispatch => {
 
 export const uploadImage = (input) => async dispatch => {
     const {image, images, content, userId} = input;
-
+    console.log(image,images)
     const formData = new FormData();
     formData.append("userId", userId);
     formData.append("content", content);

@@ -26,8 +26,8 @@ function ImagePage() {
 
 
   const [editContent, setEditContent] = useState(false);
-  const [description, setDescription] = useState(myImage?.content);
-  const [title, setTitle] = useState(myImage?.title);
+  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState("");
   const [showDesModal, setShowDesModal] = useState(false);
   const [errors, setErrors] = useState([]);
 
