@@ -34,8 +34,17 @@ function ImagePage() {
 
 
   useEffect(()=> {
+    if (!imageId || isNaN(+imageId) ) {
+      history.push("/404");
+    }
+
+
     dispatch(getAllImages())
+    .then((res)=>{
+      console.log(myImage)
+    })
     if (sessionUser) dispatch(getFavorites(sessionUser.id))
+
 
     // .then(()=>{
     //   if (!myImage){
