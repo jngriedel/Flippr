@@ -38,11 +38,27 @@ function ImagePage() {
       history.push("/404");
     }
 
+    (async () => {
+      const response = await fetch(`/api/images/${imageId}`);
+      const image = await response.json()
+
+      
+      // const user = await response.json();
+      if (image.length === 0){
+        history.push('/404')
+      }
+
+
+      // if (!user) {
+      //   history.push("/404");
+      // }
+
+
+    })();
+
 
     dispatch(getAllImages())
-    .then((res)=>{
-      console.log(myImage)
-    })
+
     if (sessionUser) dispatch(getFavorites(sessionUser.id))
 
 
