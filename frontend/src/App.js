@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
@@ -17,6 +17,7 @@ import Favorites from "./components/Favorites";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const sessionUser = useSelector(state=>state.session.user)
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -28,7 +29,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
-            <HomePage/>
+            {sessionUser? <HomePage/> : <Splash/>}
           </Route>
           <Route path="/login">
             <LoginFormPage />
@@ -45,9 +46,9 @@ function App() {
           <Route exact path="/images/:imageId" >
             <ImagePage />
           </Route>
-          <Route path='/splash'>
+          {/* <Route path='/splash'>
             <Splash/>
-          </Route>
+          </Route> */}
           <Route path='/:userId/favorites'>
             <Favorites/>
           </Route>
